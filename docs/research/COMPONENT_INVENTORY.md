@@ -1,0 +1,32 @@
+# Studybites Login Page Component Inventory
+
+- `StudybitesAuthShell`
+  - Top nav, logo, locale menu, background blur scaffold
+- `LoginForm`
+  - Social auth buttons
+  - Divider
+  - Email/password inputs
+  - Validation copy
+  - Submit state handling
+- `ProtectedRoute`
+  - Mock auth gate for future authenticated clones
+- `MockDashboard`
+  - Temporary destination after successful login
+- `StudybitesLibraryPage`
+  - Mobile top bar
+  - Frosted sidebar navigation
+  - Trial QR promo
+  - Empty-state upload panel
+  - Streak badge and sample document summary
+- `StudybitesFilePage`
+  - Shared app shell reused for file detail
+  - Back header with streak badge
+  - Learning activities card grid
+  - Document summary card
+  - Progress rail with MCQ/flashcard metrics
+- `StudybitesExamPage`
+  - Top title/progress header
+  - Translate and Hint utilities
+  - Question prompt and difficulty chip
+  - Answer option stack
+  - Ask Bito / Source / Skip footer actions
