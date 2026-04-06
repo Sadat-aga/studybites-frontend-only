@@ -1,0 +1,365 @@
+{
+  "generatedAt": "2026-04-06T07:30:00+05:30",
+  "target": "https://app.studybites.ai/en",
+  "accountState": {
+    "authenticated": true,
+    "note": "Session was already logged in inside the Playwright browser. Credentials were not read from shell env in this session."
+  },
+  "captureMethod": {
+    "browser": "Playwright MCP",
+    "networkCapture": [
+      "window.fetch/XMLHttpRequest monkey patch stored on window.__studybitesCapture",
+      "Playwright network request export for cross-checking third-party traffic"
+    ],
+    "limitation": "High-volume telemetry traffic and very large Next.js JSON payloads were truncated by the tool output. This file preserves the concrete app/API calls and the key third-party traffic that were actually observable."
+  },
+  "scenarios": [
+    {
+      "id": "scenario1",
+      "name": "Perfect MCQ run",
+      "status": "completed_with_caveat",
+      "caveat": "The first pass resumed from an in-progress exam state instead of question 1, but the session did reach round-summary and final completion/paywall states with all observed answers correct in that pass.",
+      "routesVisited": [
+        "https://app.studybites.ai/en/library/files/6260097",
+        "https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView"
+      ],
+      "screenshotCoverage": {
+        "count": 163,
+        "prefix": "scenario1-",
+        "examples": [
+          "scenario1-01-open.png",
+          "scenario1-14-round-summary-7.png",
+          "scenario1-41-next-round-12.png",
+          "scenario1-81-summary-33.png",
+          "scenario1-168-summary-120.png"
+        ]
+      },
+      "observations": {
+        "roundSummarySeen": true,
+        "finalCompletionSeen": true,
+        "roundSummaryText": [
+          "Are you Einstein?",
+          "Total XP",
+          "Your Score",
+          "Remaining",
+          "Mastery by Topic",
+          "Next Round"
+        ],
+        "finalCompletionText": [
+          "Nerd Detected!",
+          "Total XP 560",
+          "Your Score 9/9",
+          "Remaining 0",
+          "You've answered all your free questions",
+          "Unlock More Questions",
+          "Keep Learning",
+          "Review Summary",
+          "Learn Flashcards",
+          "Study Again"
+        ],
+        "paywallText": [
+          "We Have Processed The First 20 Pages",
+          "Subscribe to Bites+ to process all pages!",
+          "Number of pages 20 / 200",
+          "Daily Limit 3 documents/day / 50",
+          "Chat 10 messages/day",
+          "Document Size 30 MB / 50 MB",
+          "Explanations 5/day",
+          "Translations 5/day"
+        ]
+      },
+      "apiCalls": [
+        {
+          "url": "https://api.studybites.ai/api/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/questions/220468593/activity",
+          "method": "POST",
+          "requestBody": {
+            "answer_index": "0"
+          },
+          "response": {
+            "data": {
+              "id": 102169202,
+              "answer_index": 0,
+              "xp_point": 10,
+              "topic": "Mr. Bingley's Arrival"
+            }
+          }
+        }
+      ],
+      "thirdPartyTraffic": [
+        "https://www.google-analytics.com/g/collect",
+        "https://api-js.mixpanel.com/track",
+        "https://api-js.mixpanel.com/record",
+        "https://k.clarity.ms/collect",
+        "https://growthbook-proxy.ambitiousforest-5861066c.uaenorth.azurecontainerapps.io/sub/sdk-14P0j5LrOHZPJkx",
+        "https://tr.snapchat.com/p",
+        "https://accounts.google.com/gsi/client",
+        "https://browser.sentry-cdn.com",
+        "https://goselljslib.b-cdn.net/v2.0.0/css/gosell.css",
+        "https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"
+      ]
+    },
+    {
+      "id": "scenario2",
+      "name": "Wrong answer behavior",
+      "status": "completed",
+      "routesVisited": [
+        "https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView"
+      ],
+      "screenshotCoverage": {
+        "count": 25,
+        "prefix": "scenario2-",
+        "examples": [
+          "scenario2-02-open.png",
+          "scenario2-03-wrong-1.png",
+          "scenario2-07-wrong-3.png",
+          "scenario2-23-round-summary-11.png",
+          "scenario2-25-round2-q1.png"
+        ]
+      },
+      "observations": {
+        "firstThreeWrong": true,
+        "roundCompleted": true,
+        "requeueObserved": true,
+        "summaryText": [
+          "Certified awesome!",
+          "Your Score 2/10",
+          "Remaining 30",
+          "Mastery by Topic",
+          "Next Round"
+        ],
+        "requeueText": [
+          "Let's try again"
+        ],
+        "requeuedQuestionText": "What is the primary focus of 'Pride and Prejudice'?"
+      },
+      "apiCalls": [
+        {
+          "url": "https://api.studybites.ai/api/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/questions/220468586/activity",
+          "method": "POST",
+          "requestBody": {
+            "answer_index": "3"
+          },
+          "response": {
+            "data": {
+              "id": 102171207,
+              "answer_index": 3,
+              "xp_point": 0,
+              "topic": "Introduction to Pride and Prejudice"
+            }
+          }
+        },
+        {
+          "url": "https://api.studybites.ai/api/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/questions/220468587/activity",
+          "method": "POST",
+          "requestBody": {
+            "answer_index": "3"
+          },
+          "response": {
+            "data": {
+              "xp_point": 0
+            }
+          }
+        },
+        {
+          "url": "https://api.studybites.ai/api/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/questions/220468588/activity",
+          "method": "POST",
+          "requestBody": {
+            "answer_index": "1"
+          },
+          "response": {
+            "data": {
+              "xp_point": 0
+            }
+          }
+        },
+        {
+          "url": "https://api.studybites.ai/api/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/questions/220468595/activity",
+          "method": "POST",
+          "requestBody": {
+            "answer_index": "0"
+          },
+          "response": {
+            "data": {
+              "xp_point": 10
+            }
+          }
+        }
+      ],
+      "progressUpdateCallsObserved": {
+        "patchOrPut": [],
+        "note": "No separate PATCH/PUT progress mutation was isolated during this scenario. Progress appeared to be advanced by POSTing answer activity to the question activity endpoint."
+      }
+    },
+    {
+      "id": "scenario3",
+      "name": "Flashcard mastery",
+      "status": "partial",
+      "routesVisited": [
+        "https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/learn?isFileView"
+      ],
+      "screenshotCoverage": {
+        "count": 38,
+        "prefix": "scenario3-",
+        "examples": [
+          "scenario3-01-open.png",
+          "scenario3-02-card-flipped.png",
+          "scenario3-03-mastered-1.png",
+          "scenario3-08-still-learning-5.png",
+          "scenario3-38-mastered-35.png"
+        ]
+      },
+      "observations": {
+        "masteredActionsObserved": true,
+        "stillLearningActionsObserved": true,
+        "cardFlipRequired": true,
+        "startingCounter": "30/1",
+        "lastStableCounterSeen": "30/23",
+        "completionReached": false,
+        "note": "The deck advanced through many mastery actions but did not settle into a clean terminal completion screen under automation. This suggests additional retry/deferred queue logic in the client."
+      },
+      "apiCalls": [],
+      "apiNote": "No clean flashcard-specific mutation contract was isolated from the truncated capture during this run."
+    },
+    {
+      "id": "scenario4",
+      "name": "Hit the free tier limit via new study set creation",
+      "status": "partial",
+      "routesVisited": [
+        "https://app.studybites.ai/en/library"
+      ],
+      "screenshotCoverage": {
+        "count": 5,
+        "prefix": "scenario4-",
+        "examples": [
+          "scenario4-01-library.png",
+          "scenario4-02-new-open.png",
+          "scenario4-03-subject-modal.png",
+          "scenario4-04-title-filled.png",
+          "scenario4-05-after-create.png"
+        ]
+      },
+      "observations": {
+        "newMenuOpened": true,
+        "subjectModalOpened": true,
+        "titleEntered": "Quota probe",
+        "quotaPaywallShown": false,
+        "note": "The library create-subject path did not surface a visible quota/paywall prompt in this session. The modal submitted and closed, but the specific create-study-set mutation could not be isolated cleanly from the truncated telemetry."
+      },
+      "apiCalls": [],
+      "relatedFreeTierEvidence": [
+        "A free-tier paywall was clearly observed in scenario1 after exhausting free questions/pages."
+      ]
+    },
+    {
+      "id": "scenario5",
+      "name": "Summary generation",
+      "status": "completed",
+      "routesVisited": [
+        "https://app.studybites.ai/en/library/files/6260097",
+        "https://app.studybites.ai/en/library/files/6260097/summary"
+      ],
+      "screenshotCoverage": {
+        "count": 3,
+        "prefix": "scenario5-",
+        "examples": [
+          "scenario5-01-file-page.png",
+          "scenario5-02-after-recap-click.png",
+          "scenario5-03-after-wait.png"
+        ]
+      },
+      "observations": {
+        "generatingStateSeen": true,
+        "finalSummarySeen": true,
+        "generatingText": "We're summarizing your document... It will be ready in a few minutes",
+        "finalSummarySections": [
+          "Synopsis of Pride and Prejudice",
+          "The Social Premise of Marriage",
+          "The Bennet Family Dynamics"
+        ]
+      },
+      "apiCalls": [
+        {
+          "url": "https://api.studybites.ai/api/files/6260097",
+          "method": "GET",
+          "requestBody": null,
+          "response": {
+            "data": {
+              "id": 6260097,
+              "title": "pride-and-prejudice-jane-austen,1",
+              "status": {
+                "id": 3,
+                "name": "status.processed",
+                "color": "success"
+              },
+              "study_set_id": "cd78ee55-9807-46e5-8352-d863a94d92c9",
+              "n_pages": 515,
+              "folder_id": 5058988,
+              "study_set_name": "Pride and Prejudice Literary Analysis"
+            }
+          }
+        },
+        {
+          "url": "https://api.studybites.ai/api/summary/6260097",
+          "method": "GET",
+          "requestBody": null,
+          "response": {
+            "study_set_id": "cd78ee55-9807-46e5-8352-d863a94d92c9",
+            "study_set_name": "Pride and Prejudice Literary Analysis",
+            "isLoading": false,
+            "user_id": 2697408,
+            "rating": {
+              "rating": "excellent",
+              "opinion": "exam-"
+            },
+            "files": [
+              {
+                "id": 6260097,
+                "title": "pride-and-prejudice-jane-austen,1"
+              }
+            ]
+          }
+        },
+        {
+          "url": "https://56737a78ffc0fbf460e10fbee9e8631a.r2.cloudflarestorage.com/bites-production-bucket/summaries/summary_9659703.html?...",
+          "method": "GET",
+          "requestBody": null,
+          "response": {
+            "contentType": "text/html",
+            "preview": "<h2>Synopsis of Pride and Prejudice</h2><ul><li>Deep Knowledge of Life...</li>"
+          }
+        },
+        {
+          "url": "/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library/files/6260097/summary.json?file-id=6260097",
+          "method": "GET",
+          "requestBody": null,
+          "response": {
+            "kind": "next_data_route"
+          }
+        }
+      ],
+      "analyticsCallsObserved": [
+        "pressed-summary-content-type-selection",
+        "user-started-studying"
+      ]
+    }
+  ],
+  "crossScenarioSignals": {
+    "auth": {
+      "mechanismObserved": [
+        "Authenticated browser session reused across all scenarios",
+        "Requests to api.studybites.ai succeeded without explicit Bearer token visible in the captured request bodies",
+        "The app also calls Supabase REST directly in the browser for file_operations, implying client-side auth/session state is available to the app"
+      ],
+      "supabaseEvidence": [
+        "https://tzhhmjmpufggwpdhkrpo.supabase.co/rest/v1/file_operations?select=*&user_id=eq.16cdf903-0a80-48d5-8af1-375d1cd17ede&updated_at=gt.null&order=updated_at.asc&limit=5"
+      ]
+    },
+    "businessRulesObserved": [
+      "DOB gate was encountered earlier in the broader exploration before this deep-run session",
+      "Wrong MCQ answers are requeued into later rounds and shown again with 'Let's try again'",
+      "MCQ scoring awards xp_point 10 for correct answers and 0 for wrong answers on the observed activity endpoint",
+      "Free-tier limit/paywall appears after exhausting the free processed content/questions",
+      "Observed paywall limits: first 20 pages processed, 3 documents/day, 10 chat messages/day, 30 MB document size, 5 explanations/day, 5 translations/day"
+    ]
+  }
+}

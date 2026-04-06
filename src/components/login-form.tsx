@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AppleGlyph, EyeOpenIcon, GoogleGlyph } from "@/components/studybites-icons";
-import { useAuth, validateLoginForm } from "@/lib/mock-auth";
+import { useAuth, validateLoginForm } from "@/lib/auth";
 import type { LoginFormValues } from "@/types/auth";
 
 const initialValues: LoginFormValues = {

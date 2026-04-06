@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
-import { useRouter } from "next/navigation";
-import { flashcardsDeck } from "@/lib/mock-library";
+import { useParams, useRouter } from "next/navigation";
+import { useFlashcardsDeck } from "@/lib/study-data";
+import type { Flashcard } from "@/types/auth";
 import { cn } from "@/lib/utils";
 
 const utilityActions = ["Translate", "Explain", "Mnemonics", "Example"] as const;
@@ -18,9 +19,9 @@ type FlashcardSnapshot = {
 
 export function StudybitesFlashcardsPage() {
   const router = useRouter();
-  const [pendingInitial, setPendingInitial] = useState<number[]>(() =>
-    flashcardsDeck.map((_, index) => index),
-  );
+  const params = useParams<{ fileId: string }>();
+  const cards = useFlashcardsDeck(params?.fileId);
+  const [pendingInitial, setPendingInitial] = useState<number[]>([]);
   const [reviewQueue, setReviewQueue] = useState<number[]>([]);
   const [completedCount, setCompletedCount] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -38,18 +39,35 @@ export function StudybitesFlashcardsPage() {
   } | null>(null);
   const activeCardIndex =
     pendingInitial[0] ?? (pendingInitial.length === 0 ? reviewQueue[0] : undefined) ?? null;
-  const card = activeCardIndex == null ? null : flashcardsDeck[activeCardIndex];
+  const deckReady = cards.length > 0;
+  const card = activeCardIndex == null ? null : cards[activeCardIndex];
   const previewCardIndex =
     pendingInitial.length > 1
       ? pendingInitial[1]
       : pendingInitial.length === 1
         ? reviewQueue[0] ?? null
         : reviewQueue[1] ?? null;
-  const previewCard = previewCardIndex == null ? null : flashcardsDeck[previewCardIndex];
+  const previewCard = previewCardIndex == null ? null : cards[previewCardIndex];
   const hasInitialCards = pendingInitial.length > 0;
   const remainingCount =
     pendingInitial.length + reviewQueue.length - (card == null ? 0 : hasInitialCards ? 1 : 0);
   const queueComplete = card == null;
+
+  useEffect(() => {
+    if (!deckReady) {
+      return;
+    }
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPendingInitial(cards.map((_, index) => index));
+    setReviewQueue([]);
+    setCompletedCount(0);
+    setRevealed(false);
+    setHistory([]);
+    setBadCards([]);
+    setMasteredIds([]);
+    setLastResolved(null);
+  }, [cards, deckReady]);
 
   useEffect(() => {
     if (!notice) {
@@ -157,6 +175,10 @@ export function StudybitesFlashcardsPage() {
     return card?.example ?? "Example opened for this flashcard.";
   }
 
+  if (!deckReady) {
+    return null;
+  }
+
   if (queueComplete || card == null) {
     return (
       <FlashcardsCompletionScreen
@@ -165,7 +187,7 @@ export function StudybitesFlashcardsPage() {
         reviewedCount={completedCount}
         onBack={() => router.push("/library/files/6260097")}
         onRestart={() => {
-          setPendingInitial(flashcardsDeck.map((_, index) => index));
+          setPendingInitial(cards.map((_, index) => index));
           setReviewQueue([]);
           setCompletedCount(0);
           setRevealed(false);
@@ -408,7 +430,7 @@ function AssistantRail({
   open: boolean;
   activeUtility: (typeof utilityActions)[number] | null;
   revealed: boolean;
-  card: (typeof flashcardsDeck)[number];
+  card: Flashcard;
 }) {
   return (
     <div className="rounded-[22px] border border-[#edf1f7] bg-white/92 p-4 shadow-[0_16px_42px_rgba(103,109,167,0.12)] dark:border-[#26344e] dark:bg-[#182338]/92 dark:shadow-[0_18px_42px_rgba(0,0,0,0.32)]">
@@ -486,7 +508,7 @@ function MobileAssistantSheet({
 }: {
   activeUtility: (typeof utilityActions)[number] | null;
   revealed: boolean;
-  card: (typeof flashcardsDeck)[number];
+  card: Flashcard;
   onClose: () => void;
 }) {
   return (

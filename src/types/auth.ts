@@ -4,8 +4,14 @@ export type LoginFormValues = {
 };
 
 export type AuthUser = {
+  id: string;
   email: string;
   name: string;
+  avatarUrl?: string | null;
+  locale?: string;
+  dateOfBirth?: string | null;
+  onboardingDobCompleted?: boolean;
+  streakCount?: number;
 };
 
 export type DashboardStat = {

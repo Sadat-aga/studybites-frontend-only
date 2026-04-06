@@ -2,14 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { useEffect, useRef, useState, type MouseEvent, type ReactNode, type UIEvent } from "react";
 import { useTheme, type ThemePreference } from "@/components/theme-provider";
-import { useAuth } from "@/lib/mock-auth";
-import { fileActivities, fileProgressMetrics, libraryDocuments } from "@/lib/mock-library";
+import { useAuth } from "@/lib/auth";
+import { uploadDocumentAndProcess } from "@/lib/documents";
+import { useFilePageData } from "@/lib/study-data";
 import { cn } from "@/lib/utils";
 
 export function StudybitesFilePage() {
   const { logout, user } = useAuth();
+  const params = useParams<{ fileId: string }>();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [upgradeOpen, setUpgradeOpen] = useState(false);
@@ -27,7 +30,7 @@ export function StudybitesFilePage() {
   );
   const uploadInputRef = useRef<HTMLInputElement | null>(null);
   const mobileTopDeckRef = useRef<HTMLDivElement | null>(null);
-  const document = libraryDocuments[0];
+  const { document, activities, progress } = useFilePageData(params?.fileId, user?.id);
 
   useEffect(() => {
     if (!notice) {
@@ -214,11 +217,22 @@ export function StudybitesFilePage() {
             type="file"
             className="hidden"
             onChange={(event) => {
-              setNotice(
-                event.target.files?.[0]?.name
-                  ? `${event.target.files[0].name} uploaded to this study set.`
-                  : "Upload dialog opened.",
-              );
+              const file = event.target.files?.[0];
+              if (!file) {
+                setNotice("Upload dialog opened.");
+                event.currentTarget.value = "";
+                return;
+              }
+
+              void uploadDocumentAndProcess({
+                userId: user?.id,
+                file,
+                existingFolderId: params?.fileId,
+              })
+                .then((result) => setNotice(`${result.fileName} uploaded. Processing started.`))
+                .catch((error: unknown) =>
+                  setNotice(error instanceof Error ? error.message : "Upload failed."),
+                );
               event.currentTarget.value = "";
             }}
           />
@@ -265,6 +279,7 @@ export function StudybitesFilePage() {
                 <MobileTopDeck
                   activeSlide={mobileTopSlide}
                   deckRef={mobileTopDeckRef}
+                  progress={progress}
                   onShare={handleShare}
                   onScroll={(event) => {
                     const target = event.currentTarget;
@@ -296,7 +311,7 @@ export function StudybitesFilePage() {
                       title="MCQs"
                       description="40 Questions"
                       ctaLabel="Practice"
-                      href={fileActivities[0].href}
+                      href={activities[0]?.href}
                       editHref="/library/files/6260097/mcq/content"
                       tone="indigo"
                       icon={<McqArtwork />}
@@ -305,7 +320,7 @@ export function StudybitesFilePage() {
                       title="Flashcards"
                       description="30 Flashcards"
                       ctaLabel="Memorize"
-                      href={fileActivities[1].href}
+                      href={activities[1]?.href}
                       tone="blue"
                       onEdit={() => setEditorOpen("Flashcards")}
                       icon={<FlashcardsArtwork />}
@@ -315,7 +330,7 @@ export function StudybitesFilePage() {
                       description="1 Summary"
                       ctaLabel="Recap"
                       tone="pink"
-                      href={fileActivities[2].href}
+                      href={activities[2]?.href}
                       icon={<SummaryArtwork />}
                     />
                     <ActivityCard
@@ -333,6 +348,7 @@ export function StudybitesFilePage() {
                       Document
                     </div>
                     <DocumentCard
+                      document={document}
                       menuOpen={fileMenuOpen}
                       onCopyLink={async () => {
                         setFileMenuOpen(false);
@@ -356,6 +372,7 @@ export function StudybitesFilePage() {
                         Document
                       </div>
                       <DocumentCard
+                        document={document}
                         menuOpen={fileMenuOpen}
                         onCopyLink={async () => {
                           setFileMenuOpen(false);
@@ -376,7 +393,7 @@ export function StudybitesFilePage() {
                 </div>
 
                 <aside className="hidden w-full lg:block lg:max-w-[258px] xl:max-w-[270px]">
-                  <ProgressPanel onShare={handleShare} />
+                  <ProgressPanel onShare={handleShare} progress={progress} />
                 </aside>
               </div>
             </div>
@@ -563,10 +580,16 @@ function FileMobileHeader({
   );
 }
 
-function ProgressPanel({ onShare }: { onShare: () => Promise<void> }) {
+function ProgressPanel({
+  onShare,
+  progress,
+}: {
+  onShare: () => Promise<void>;
+  progress: import("@/types/auth").FileProgressMetric[];
+}) {
   return (
     <div className="rounded-[28px] border border-[#edf1f7] bg-white px-4 py-4 shadow-[0_18px_44px_rgba(103,109,167,0.12)] dark:border-[#26344e] dark:bg-[#182338] dark:shadow-[0_20px_46px_rgba(0,0,0,0.3)]">
-      <ProgressCard />
+      <ProgressCard progress={progress} />
       <div className="mt-5">
         <ShareCard onShare={onShare} />
       </div>
@@ -574,7 +597,7 @@ function ProgressPanel({ onShare }: { onShare: () => Promise<void> }) {
   );
 }
 
-function ProgressCard() {
+function ProgressCard({ progress }: { progress: import("@/types/auth").FileProgressMetric[] }) {
   return (
     <>
       <div className="mb-3 flex justify-center">
@@ -584,7 +607,7 @@ function ProgressCard() {
         Track Your Progress!
       </div>
       <div className="mt-5 space-y-5 rounded-[20px] border border-[#edf1f7] px-4 py-4 dark:border-[#2a3953]">
-        {fileProgressMetrics.map((metric) => (
+        {progress.map((metric) => (
           <ProgressRow key={metric.label} label={metric.label} value={metric.value} />
         ))}
       </div>
@@ -806,17 +829,18 @@ function ProfilePanel({
 }
 
 function DocumentCard({
+  document,
   menuOpen,
   onCopyLink,
   onEdit,
   onToggleMenu,
 }: {
+  document: import("@/types/auth").LibraryDocument;
   menuOpen: boolean;
   onCopyLink: () => void | Promise<void>;
   onEdit: () => void;
   onToggleMenu: (event: MouseEvent<HTMLButtonElement>) => void;
 }) {
-  const document = libraryDocuments[0];
 
   return (
     <a
@@ -869,12 +893,14 @@ function DocumentCard({
 function MobileTopDeck({
   activeSlide,
   deckRef,
+  progress,
   onShare,
   onScroll,
   onSlideChange,
 }: {
   activeSlide: 0 | 1;
   deckRef: React.RefObject<HTMLDivElement | null>;
+  progress: import("@/types/auth").FileProgressMetric[];
   onShare: () => Promise<void>;
   onScroll: (event: UIEvent<HTMLDivElement>) => void;
   onSlideChange: (slide: 0 | 1) => void;
@@ -888,7 +914,7 @@ function MobileTopDeck({
       >
         <div className="min-w-full snap-center pr-1">
           <div className="min-h-[172px] rounded-[28px] border border-[#edf1f7] bg-white px-4 py-4 shadow-[0_18px_44px_rgba(103,109,167,0.12)] dark:border-[#26344e] dark:bg-[#182338] dark:shadow-[0_20px_46px_rgba(0,0,0,0.3)]">
-            <ProgressCard />
+            <ProgressCard progress={progress} />
           </div>
         </div>
         <div className="min-w-full snap-center pl-1">

@@ -4,8 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import { useTheme, type ThemePreference } from "@/components/theme-provider";
-import { useAuth } from "@/lib/mock-auth";
-import { libraryDocuments } from "@/lib/mock-library";
+import { useAuth } from "@/lib/auth";
+import { uploadDocumentAndProcess } from "@/lib/documents";
+import { DEFAULT_LIBRARY_DOCUMENT, useLibraryDocuments } from "@/lib/study-data";
 import { cn } from "@/lib/utils";
 
 export function StudybitesLibraryPage() {
@@ -25,10 +26,12 @@ export function StudybitesLibraryPage() {
   const [infoPanel, setInfoPanel] = useState<null | "account" | "idea" | "updates" | "help">(
     null,
   );
-  const [subjectTitle, setSubjectTitle] = useState(libraryDocuments[0].name);
-  const [draftTitle, setDraftTitle] = useState(subjectTitle);
+  const documents = useLibraryDocuments(user?.id);
+  const document = documents[0] ?? DEFAULT_LIBRARY_DOCUMENT;
+  const [customSubjectTitle, setCustomSubjectTitle] = useState<string | null>(null);
+  const subjectTitle = customSubjectTitle ?? document.name;
+  const [draftTitle, setDraftTitle] = useState(document.name);
   const uploadInputRef = useRef<HTMLInputElement | null>(null);
-  const document = libraryDocuments[0];
 
   function closeTransientUi() {
     setMoreMenuOpen(false);
@@ -45,7 +48,7 @@ export function StudybitesLibraryPage() {
     if (!next) {
       return;
     }
-    setSubjectTitle(next);
+    setCustomSubjectTitle(next);
     setRenameOpen(false);
     showNotice("Subject renamed.");
   }
@@ -66,9 +69,19 @@ export function StudybitesLibraryPage() {
     }
   }
 
-  function handleUploadSelection(fileName?: string) {
-    setLibraryHidden(false);
-    showNotice(fileName ? `${fileName} uploaded to your library.` : "Upload dialog opened.");
+  async function handleUploadSelection(file?: File | null) {
+    if (!file) {
+      showNotice("Upload dialog opened.");
+      return;
+    }
+
+    try {
+      const result = await uploadDocumentAndProcess({ userId: user?.id, file });
+      setLibraryHidden(false);
+      showNotice(`${result.fileName} uploaded. Processing started.`);
+    } catch (error) {
+      showNotice(error instanceof Error ? error.message : "Upload failed.");
+    }
   }
 
   useEffect(() => {
@@ -253,7 +266,7 @@ export function StudybitesLibraryPage() {
             type="file"
             className="hidden"
             onChange={(event) => {
-              handleUploadSelection(event.target.files?.[0]?.name);
+              void handleUploadSelection(event.target.files?.[0]);
               event.currentTarget.value = "";
             }}
           />
@@ -433,7 +446,7 @@ export function StudybitesLibraryPage() {
                 type="button"
                 disabled={!draftTitle.trim()}
                 onClick={() => {
-                  setSubjectTitle(draftTitle.trim());
+                  setCustomSubjectTitle(draftTitle.trim());
                   setLibraryHidden(false);
                   setNewSubjectOpen(false);
                   showNotice("New subject created.");

@@ -1,8 +1,18 @@
 "use client";
 
 import { useEffect, useEffectEvent, useState, type ReactNode } from "react";
-import { useRouter } from "next/navigation";
-import { examQuestions } from "@/lib/mock-library";
+import { useParams, useRouter } from "next/navigation";
+import { useAuth } from "@/lib/auth";
+import {
+  createSessionQueue,
+  flagMcqQuestion,
+  recordMcqAttempt,
+  startMcqSession,
+  syncMcqSessionSnapshot,
+  type SessionEntry,
+} from "@/lib/mcq-session";
+import { useExamQuestions } from "@/lib/study-data";
+import type { ExamQuestion } from "@/types/auth";
 import { cn } from "@/lib/utils";
 
 const progressDots = Array.from({ length: 10 }, (_, index) => index);
@@ -22,11 +32,6 @@ const badFlashcardReasons = [
 ] as const;
 
 type AnswerState = "idle" | "correct" | "incorrect";
-type SessionEntry = {
-  questionIndex: number;
-  round: number;
-  key: string;
-};
 type AttemptRecord = {
   questionId: string;
   topic: string;
@@ -36,17 +41,20 @@ type AttemptRecord = {
 
 const ROUND_SIZE = 10;
 
-function createInitialQueue(): SessionEntry[] {
-  return examQuestions.map((_, index) => ({
-    questionIndex: index,
-    round: 1,
-    key: `round-1-${index}`,
+function createInitialQueue(questions: ExamQuestion[]): SessionEntry[] {
+  return createSessionQueue(questions).map((entry) => ({
+    questionIndex: entry.questionIndex,
+    round: entry.round,
+    key: entry.key,
   }));
 }
 
 export function StudybitesExamPage() {
   const router = useRouter();
-  const [queue, setQueue] = useState<SessionEntry[]>(() => createInitialQueue());
+  const params = useParams<{ fileId: string }>();
+  const { user } = useAuth();
+  const questions = useExamQuestions(params?.fileId);
+  const [queue, setQueue] = useState<SessionEntry[]>([]);
   const [currentPosition, setCurrentPosition] = useState(0);
   const [selectedChoiceId, setSelectedChoiceId] = useState<string | null>(null);
   const [answerState, setAnswerState] = useState<AnswerState>("idle");
@@ -64,12 +72,17 @@ export function StudybitesExamPage() {
   const [flaggedQuestionIds, setFlaggedQuestionIds] = useState<string[]>([]);
   const [notice, setNotice] = useState("");
   const [translateLanguage, setTranslateLanguage] = useState(translateOptions[0]);
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [score, setScore] = useState(0);
+  const [xpEarned, setXpEarned] = useState(0);
+  const [bestStreak, setBestStreak] = useState(0);
+  const [currentStreak, setCurrentStreak] = useState(0);
 
   const activeEntry = queue[currentPosition] ?? null;
-  const question = activeEntry ? examQuestions[activeEntry.questionIndex] : null;
+  const question = activeEntry ? questions[activeEntry.questionIndex] : null;
   const selectedChoice = question?.choices.find((choice) => choice.id === selectedChoiceId) ?? null;
   const answeredCount = attempts.length;
-  const queueCompleted = activeEntry == null || question == null;
+  const queueCompleted = questions.length > 0 && (activeEntry == null || question == null);
   const nextRound = activeEntry ? activeEntry.round + 1 : 2;
   const explanationLabel =
     answerState === "correct"
@@ -90,6 +103,66 @@ export function StudybitesExamPage() {
       : attempts.slice((roundSummaryRound - 1) * ROUND_SIZE, roundSummaryRound * ROUND_SIZE);
 
   useEffect(() => {
+    if (questions.length === 0) {
+      return;
+    }
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setQueue(createInitialQueue(questions));
+    setCurrentPosition(0);
+    setSelectedChoiceId(null);
+    setAnswerState("idle");
+    setAttempts([]);
+    setRoundSummaryRound(null);
+    setSummaryTopicsExpanded(false);
+    setAskBitoOpen(false);
+    setExplanationOpen(false);
+    setHintOpen(false);
+    setSourceOpen(false);
+    setTranslateOpen(false);
+    setSettingsOpen(false);
+    setBadFlashcardOpen(false);
+    setFlaggedQuestionIds([]);
+    setTranslateLanguage(translateOptions[0]);
+    setScore(0);
+    setXpEarned(0);
+    setBestStreak(0);
+    setCurrentStreak(0);
+    setSessionId(null);
+
+    const userId = user?.id;
+    if (!userId || !params?.fileId) {
+      return;
+    }
+
+    const sessionUserId = userId;
+    let cancelled = false;
+    async function createSession() {
+      try {
+        const nextSession = await startMcqSession({
+          userId: sessionUserId,
+          fileId: params.fileId,
+          questions,
+          forceNew: true,
+        });
+        if (!cancelled) {
+          setSessionId(nextSession.id);
+        }
+      } catch (error) {
+        if (!cancelled) {
+          setNotice(error instanceof Error ? error.message : "Could not start the MCQ session.");
+        }
+      }
+    }
+
+    void createSession();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [params?.fileId, questions, user?.id]);
+
+  useEffect(() => {
     if (!notice) {
       return;
     }
@@ -97,6 +170,45 @@ export function StudybitesExamPage() {
     const timeoutId = window.setTimeout(() => setNotice(""), 2200);
     return () => window.clearTimeout(timeoutId);
   }, [notice]);
+
+
+  useEffect(() => {
+    if (!sessionId || !questions.length) {
+      return;
+    }
+
+    const status = queueCompleted ? "completed" : "active";
+    void syncMcqSessionSnapshot({
+      sessionId,
+      queue,
+      currentIndex: currentPosition,
+      currentRound: activeEntry?.round ?? roundSummaryRound ?? 1,
+      answeredQuestions: attempts.length,
+      totalQuestions: questions.length,
+      score,
+      xpEarned,
+      bestStreak,
+      currentStreak,
+      flaggedCount: flaggedQuestionIds.length,
+      status,
+    }).catch((error) => {
+      setNotice(error instanceof Error ? error.message : "Could not sync the MCQ session.");
+    });
+  }, [
+    activeEntry?.round,
+    attempts.length,
+    bestStreak,
+    currentPosition,
+    currentStreak,
+    flaggedQuestionIds.length,
+    queue,
+    queueCompleted,
+    questions.length,
+    roundSummaryRound,
+    score,
+    sessionId,
+    xpEarned,
+  ]);
 
   function resetQuestionUi() {
     setSelectedChoiceId(null);
@@ -156,6 +268,22 @@ export function StudybitesExamPage() {
 
     const nextAnswerState: AnswerState =
       choiceId === question.correctChoiceId ? "correct" : "incorrect";
+    const nextQueue =
+      nextAnswerState === "correct"
+        ? queue
+        : [
+            ...queue,
+            {
+              questionIndex: activeEntry?.questionIndex ?? 0,
+              round: nextRound,
+              key: `${question.id}-round-${nextRound}-${queue.length}`,
+            },
+          ];
+    const nextXpAwarded = nextAnswerState === "correct" ? 10 : 0;
+    const nextScore = score + (nextAnswerState === "correct" ? 1 : 0);
+    const nextXpEarned = xpEarned + nextXpAwarded;
+    const nextCurrentStreak = nextAnswerState === "correct" ? currentStreak + 1 : 0;
+    const nextBestStreak = Math.max(bestStreak, nextCurrentStreak);
 
     setSelectedChoiceId(choiceId);
     setAnswerState(nextAnswerState);
@@ -168,36 +296,69 @@ export function StudybitesExamPage() {
         round: activeEntry.round,
       },
     ]);
+    setScore(nextScore);
+    setXpEarned(nextXpEarned);
+    setCurrentStreak(nextCurrentStreak);
+    setBestStreak(nextBestStreak);
     setHintOpen(false);
     setSourceOpen(false);
     setTranslateOpen(false);
 
+    if (sessionId && user?.id) {
+      void recordMcqAttempt({
+        sessionId,
+        userId: user.id,
+        questionId: question.id,
+        selectedChoiceId: choiceId,
+        isCorrect: nextAnswerState === "correct",
+        roundNumber: activeEntry.round,
+        queuePosition: currentPosition,
+        xpAwarded: nextXpAwarded,
+      }).catch((error) => {
+        setNotice(error instanceof Error ? error.message : "Could not save the MCQ attempt.");
+      });
+    }
+
     if (nextAnswerState === "correct") {
       setNotice("Correct answer selected.");
     } else {
-      setQueue((current) => [
-        ...current,
-        {
-          questionIndex: activeEntry?.questionIndex ?? 0,
-          round: nextRound,
-          key: `${question.id}-round-${nextRound}-${current.length}`,
-        },
-      ]);
+      setQueue(nextQueue);
       setNotice(`We'll bring this one back in Round ${nextRound}.`);
     }
   }
 
   function restartSession() {
-    setQueue(createInitialQueue());
+    setQueue(createInitialQueue(questions));
     setCurrentPosition(0);
     setAttempts([]);
     setRoundSummaryRound(null);
     setSummaryTopicsExpanded(false);
     setAskBitoOpen(false);
     setFlaggedQuestionIds([]);
+    setScore(0);
+    setXpEarned(0);
+    setBestStreak(0);
+    setCurrentStreak(0);
     resetQuestionUi();
     setSettingsOpen(false);
     setNotice("Practice session restarted.");
+
+    if (user?.id && params?.fileId) {
+      void startMcqSession({
+        userId: user.id,
+        fileId: params.fileId,
+        questions,
+        forceNew: true,
+      })
+        .then((nextSession) => setSessionId(nextSession.id))
+        .catch((error) => {
+          setNotice(error instanceof Error ? error.message : "Could not restart the MCQ session.");
+        });
+    }
+  }
+
+  if (questions.length === 0) {
+    return null;
   }
 
   if (roundSummaryRound != null) {
@@ -235,7 +396,7 @@ export function StudybitesExamPage() {
     const totalCorrect = attempts.filter((attempt) => attempt.result === "correct").length;
     const totalIncorrect = attempts.length - totalCorrect;
     const totalRounds = Math.max(1, ...attempts.map((attempt) => attempt.round));
-    const totalXp = totalCorrect * 10;
+    const totalXp = xpEarned;
     const topicStats = buildTopicStats(attempts);
 
     return (
@@ -250,6 +411,10 @@ export function StudybitesExamPage() {
         onBack={() => router.push("/library/files/6260097")}
       />
     );
+  }
+
+  if (!question) {
+    return null;
   }
 
   return (
@@ -599,6 +764,11 @@ export function StudybitesExamPage() {
               setFlaggedQuestionIds((current) =>
                 question == null || current.includes(question.id) ? current : [...current, question.id],
               );
+              if (sessionId && question) {
+                void flagMcqQuestion(sessionId, question.id).catch((error) => {
+                  setNotice(error instanceof Error ? error.message : "Could not save the report.");
+                });
+              }
               setNotice(`${badFlashcardReason} reported for review.`);
             }}
             className="mt-5 h-[48px] w-full rounded-[16px] bg-[linear-gradient(90deg,#635ef6_0%,#726cf7_100%)] text-[15px] font-bold text-white shadow-[0_16px_34px_rgba(96,97,240,0.22)]"
@@ -976,7 +1146,7 @@ function AskBitoPanel({
   explanationOpen: boolean;
   answerState: AnswerState;
   prompt: string;
-  question: (typeof examQuestions)[number];
+  question: ExamQuestion;
   selectedChoiceLabel: string | null;
   onCloseExplanation: () => void;
 }) {
@@ -1043,7 +1213,7 @@ function MobileAskBitoSheet({
   explanationOpen: boolean;
   prompt: string;
   answerState: AnswerState;
-  question: (typeof examQuestions)[number];
+  question: ExamQuestion;
   selectedChoiceLabel: string | null;
   onClose: () => void;
   onCloseExplanation: () => void;
@@ -1083,7 +1253,7 @@ function BitoExplanation({
   onClose,
 }: {
   answerState: AnswerState;
-  question: (typeof examQuestions)[number];
+  question: ExamQuestion;
   selectedChoiceLabel: string | null;
   onClose: () => void;
 }) {

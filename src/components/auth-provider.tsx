@@ -1,98 +1,145 @@
 "use client";
 
-import { useCallback, useMemo, useSyncExternalStore } from "react";
-import {
-  AUTH_CHANGE_EVENT,
-  AUTH_STORAGE_KEY,
-  AuthContext,
-  validateLogin,
-} from "@/lib/mock-auth";
-import type { LoginFormValues } from "@/types/auth";
-
-type AuthSnapshot = { email: string; name: string } | null;
-
-let cachedRawSnapshot: string | null | undefined;
-let cachedParsedSnapshot: AuthSnapshot = null;
+import { useCallback, useEffect, useMemo, useState } from "react";
+import type { AuthChangeEvent, Session } from "@supabase/supabase-js";
+import { AuthContext, upsertAuthUserProfile } from "@/lib/auth";
+import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
+import type { AuthUser, LoginFormValues } from "@/types/auth";
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const user = useSyncExternalStore(subscribeToAuth, getAuthSnapshot, getServerSnapshot);
+  const [user, setUser] = useState<AuthUser | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
+  const [isReady, setIsReady] = useState(false);
+  const supabase = getSupabaseBrowserClient();
 
-  const login = useCallback(async (values: LoginFormValues) => {
-    const match = validateLogin(values.email, values.password);
+  const refreshUser = useCallback(async () => {
+    const {
+      data: { session: nextSession },
+    } = await supabase.auth.getSession();
 
-    if (!match) {
-      return { ok: false as const, message: "Incorrect email or password" };
+    setSession(nextSession);
+
+    if (!nextSession?.user) {
+      setUser(null);
+      return;
     }
 
-    const authUser = { email: match.email, name: match.name };
-    window.localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(authUser));
-    window.dispatchEvent(new Event(AUTH_CHANGE_EVENT));
+    const nextUser = await upsertAuthUserProfile(supabase, nextSession.user);
+    setUser(nextUser);
+  }, [supabase]);
 
-    return { ok: true as const };
-  }, []);
+  useEffect(() => {
+    let isMounted = true;
 
-  const logout = useCallback(() => {
-    window.localStorage.removeItem(AUTH_STORAGE_KEY);
-    window.dispatchEvent(new Event(AUTH_CHANGE_EVENT));
-  }, []);
+    async function bootstrap() {
+      try {
+        const {
+          data: { session: initialSession },
+        } = await supabase.auth.getSession();
+
+        if (!isMounted) {
+          return;
+        }
+
+        setSession(initialSession);
+
+        if (initialSession?.user) {
+          const nextUser = await upsertAuthUserProfile(supabase, initialSession.user);
+          if (isMounted) {
+            setUser(nextUser);
+          }
+        }
+      } finally {
+        if (isMounted) {
+          setIsReady(true);
+        }
+      }
+    }
+
+    void bootstrap();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event: AuthChangeEvent, nextSession: Session | null) => {
+      setSession(nextSession);
+
+      if (!nextSession?.user) {
+        setUser(null);
+        setIsReady(true);
+        return;
+      }
+
+      void upsertAuthUserProfile(supabase, nextSession.user).then((nextUser) => {
+        if (isMounted) {
+          setUser(nextUser);
+          setIsReady(true);
+        }
+      });
+    });
+
+    return () => {
+      isMounted = false;
+      subscription.unsubscribe();
+    };
+  }, [supabase]);
+
+  const login = useCallback(
+    async (values: LoginFormValues) => {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: values.email.trim().toLowerCase(),
+        password: values.password,
+      });
+
+      if (error) {
+        return { ok: false as const, message: error.message };
+      }
+
+      await refreshUser();
+      return { ok: true as const };
+    },
+    [refreshUser, supabase.auth],
+  );
+
+  const signUp = useCallback(
+    async (values: LoginFormValues) => {
+      const { error } = await supabase.auth.signUp({
+        email: values.email.trim().toLowerCase(),
+        password: values.password,
+        options: {
+          data: {
+            name: values.email.trim().split("@")[0],
+          },
+        },
+      });
+
+      if (error) {
+        return { ok: false as const, message: error.message };
+      }
+
+      await refreshUser();
+      return { ok: true as const };
+    },
+    [refreshUser, supabase.auth],
+  );
+
+  const logout = useCallback(async () => {
+    await supabase.auth.signOut();
+    setSession(null);
+    setUser(null);
+  }, [supabase.auth]);
 
   const value = useMemo(
     () => ({
-      isAuthenticated: Boolean(user),
-      isReady: true,
+      isAuthenticated: Boolean(session?.user && user),
+      isReady,
       user,
       login,
+      signUp,
       logout,
+      refreshUser,
     }),
-    [login, logout, user],
+    [isReady, login, logout, refreshUser, session?.user, signUp, user],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}
-
-function subscribeToAuth(onStoreChange: () => void) {
-  if (typeof window === "undefined") {
-    return () => undefined;
-  }
-
-  const handler = () => onStoreChange();
-  window.addEventListener("storage", handler);
-  window.addEventListener(AUTH_CHANGE_EVENT, handler);
-
-  return () => {
-    window.removeEventListener("storage", handler);
-    window.removeEventListener(AUTH_CHANGE_EVENT, handler);
-  };
-}
-
-function getAuthSnapshot() {
-  if (typeof window === "undefined") {
-    return null;
-  }
-
-  const stored = window.localStorage.getItem(AUTH_STORAGE_KEY);
-  if (stored === cachedRawSnapshot) {
-    return cachedParsedSnapshot;
-  }
-
-  if (!stored) {
-    cachedRawSnapshot = stored;
-    cachedParsedSnapshot = null;
-    return null;
-  }
-
-  try {
-    cachedRawSnapshot = stored;
-    cachedParsedSnapshot = JSON.parse(stored) as AuthSnapshot;
-    return cachedParsedSnapshot;
-  } catch {
-    window.localStorage.removeItem(AUTH_STORAGE_KEY);
-    cachedRawSnapshot = null;
-    cachedParsedSnapshot = null;
-    return null;
-  }
-}
-
-function getServerSnapshot() {
-  return null;
 }

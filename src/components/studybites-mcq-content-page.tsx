@@ -2,15 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useTheme, type ThemePreference } from "@/components/theme-provider";
-import { useAuth } from "@/lib/mock-auth";
-import {
-  fileProgressMetrics,
-  libraryDocuments,
-  mcqContentItems,
-  mcqContentStats,
-} from "@/lib/mock-library";
+import { useAuth } from "@/lib/auth";
+import { uploadDocumentAndProcess } from "@/lib/documents";
+import { saveMcqContentItem, useMcqContentData } from "@/lib/study-data";
 import type { McqContentItem, McqStatus } from "@/types/auth";
 import { cn } from "@/lib/utils";
 
@@ -18,6 +15,7 @@ type InfoPanel = "account" | "idea" | "updates" | "help";
 
 export function StudybitesMcqContentPage() {
   const { logout, user } = useAuth();
+  const params = useParams<{ fileId: string }>();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [upgradeOpen, setUpgradeOpen] = useState(false);
@@ -36,9 +34,13 @@ export function StudybitesMcqContentPage() {
   const [draftStatus, setDraftStatus] = useState<McqStatus>("Remaining");
   const [mobileInfoSlide, setMobileInfoSlide] = useState<0 | 1>(0);
   const [notice, setNotice] = useState("");
-  const [questions, setQuestions] = useState(mcqContentItems);
   const uploadInputRef = useRef<HTMLInputElement | null>(null);
-  const document = libraryDocuments[0];
+  const { document, progress, items, stats, setItems } = useMcqContentData(params?.fileId, user?.id);
+  const [questions, setQuestions] = useState<McqContentItem[]>(items);
+
+  useEffect(() => {
+    setQuestions(items);
+  }, [items]);
 
   useEffect(() => {
     if (!notice) return;
@@ -71,42 +73,39 @@ export function StudybitesMcqContentPage() {
     });
   }, [activeStat, questions, search]);
 
-  function createQuestion() {
+  async function createQuestion() {
     if (!draftQuestion.trim() || !draftAnswer.trim()) return;
 
-    setQuestions((current) => [
-      {
-        id: `custom-${current.length + 1}`,
-        question: draftQuestion.trim(),
-        answer: draftAnswer.trim(),
-        tag: draftTag.trim() || "Custom Question",
-        difficulty: draftDifficulty,
-        status: draftStatus,
-      },
-      ...current,
-    ]);
+    const saved = await saveMcqContentItem(params?.fileId, user?.id, {
+      id: `custom-${draftQuestion.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-") || "question"}`,
+      question: draftQuestion.trim(),
+      answer: draftAnswer.trim(),
+      tag: draftTag.trim() || "Custom Question",
+      difficulty: draftDifficulty,
+      status: draftStatus,
+    });
+
+    setQuestions((current) => [saved, ...current]);
+    setItems((current) => [saved, ...current]);
     resetEditorState();
     setAddQuestionOpen(false);
     setNotice("Question added to the study set.");
   }
 
-  function saveEditedQuestion() {
+  async function saveEditedQuestion() {
     if (!editingQuestion || !draftQuestion.trim() || !draftAnswer.trim()) return;
 
-    setQuestions((current) =>
-      current.map((item) =>
-        item.id === editingQuestion.id
-          ? {
-              ...item,
-              question: draftQuestion.trim(),
-              answer: draftAnswer.trim(),
-              tag: draftTag.trim() || "Custom Question",
-              difficulty: draftDifficulty,
-              status: draftStatus,
-            }
-          : item,
-      ),
-    );
+    const saved = await saveMcqContentItem(params?.fileId, user?.id, {
+      ...editingQuestion,
+      question: draftQuestion.trim(),
+      answer: draftAnswer.trim(),
+      tag: draftTag.trim() || "Custom Question",
+      difficulty: draftDifficulty,
+      status: draftStatus,
+    });
+
+    setQuestions((current) => current.map((item) => (item.id === editingQuestion.id ? saved : item)));
+    setItems((current) => current.map((item) => (item.id === editingQuestion.id ? saved : item)));
     setEditingQuestion(null);
     resetEditorState();
     setNotice("Question updated.");
@@ -288,11 +287,22 @@ export function StudybitesMcqContentPage() {
             type="file"
             className="hidden"
             onChange={(event) => {
-              setNotice(
-                event.target.files?.[0]?.name
-                  ? `${event.target.files[0].name} uploaded to this study set.`
-                  : "Upload dialog opened.",
-              );
+              const file = event.target.files?.[0];
+              if (!file) {
+                setNotice("Upload dialog opened.");
+                event.currentTarget.value = "";
+                return;
+              }
+
+              void uploadDocumentAndProcess({
+                userId: user?.id,
+                file,
+                existingFolderId: params?.fileId,
+              })
+                .then((result) => setNotice(`${result.fileName} uploaded. Processing started.`))
+                .catch((error: unknown) =>
+                  setNotice(error instanceof Error ? error.message : "Upload failed."),
+                );
               event.currentTarget.value = "";
             }}
           />
@@ -337,7 +347,7 @@ export function StudybitesMcqContentPage() {
               </h1>
 
               <div className="mt-5 flex flex-wrap gap-2.5">
-                {mcqContentStats.map((stat) => (
+                {stats.map((stat) => (
                   <button
                     key={stat.label}
                     type="button"
@@ -396,6 +406,7 @@ export function StudybitesMcqContentPage() {
                   <div className="mt-6 xl:hidden">
                     <MobileInfoDeck
                       activeSlide={mobileInfoSlide}
+                      progress={progress}
                       onShare={handleShare}
                       onSlideChange={setMobileInfoSlide}
                     />
@@ -403,7 +414,7 @@ export function StudybitesMcqContentPage() {
                 </div>
 
                 <aside className="hidden w-full xl:block xl:max-w-[270px]">
-                  <ProgressPanel onShare={handleShare} />
+                  <ProgressPanel onShare={handleShare} progress={progress} />
                 </aside>
               </div>
             </div>
@@ -655,7 +666,7 @@ function McqQuestionCard({
   item,
   onEdit,
 }: {
-  item: (typeof mcqContentItems)[number];
+  item: McqContentItem;
   onEdit: () => void;
 }) {
   return (
@@ -753,10 +764,12 @@ function EditorSelect({
 
 function MobileInfoDeck({
   activeSlide,
+  progress,
   onShare,
   onSlideChange,
 }: {
   activeSlide: 0 | 1;
+  progress: import("@/types/auth").FileProgressMetric[];
   onShare: () => Promise<void>;
   onSlideChange: (slide: 0 | 1) => void;
 }) {
@@ -770,7 +783,7 @@ function MobileInfoDeck({
           )}
         >
           <div className="w-full shrink-0">
-            <ProgressPanel onShare={onShare} />
+            <ProgressPanel onShare={onShare} progress={progress} />
           </div>
           <div className="w-full shrink-0">
             <ShareCard onShare={onShare} />
@@ -798,7 +811,13 @@ function MobileInfoDeck({
   );
 }
 
-function ProgressPanel({ onShare }: { onShare: () => Promise<void> }) {
+function ProgressPanel({
+  onShare,
+  progress,
+}: {
+  onShare: () => Promise<void>;
+  progress: import("@/types/auth").FileProgressMetric[];
+}) {
   return (
     <div className="rounded-[28px] border border-[#edf1f7] bg-white px-4 py-4 shadow-[0_18px_44px_rgba(103,109,167,0.12)] dark:border-[#26344e] dark:bg-[#182338] dark:shadow-[0_20px_46px_rgba(0,0,0,0.3)]">
       <div className="mb-3 flex justify-center">
@@ -808,7 +827,7 @@ function ProgressPanel({ onShare }: { onShare: () => Promise<void> }) {
         Track Your Progress!
       </div>
       <div className="mt-6 space-y-5 rounded-[20px] border border-[#edf1f7] px-4 py-4 dark:border-[#2a3953]">
-        {fileProgressMetrics.map((metric) => (
+        {progress.map((metric) => (
           <ProgressRow key={metric.label} label={metric.label} value={metric.value} />
         ))}
       </div>

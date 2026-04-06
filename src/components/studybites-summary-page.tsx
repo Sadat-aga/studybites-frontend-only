@@ -1,29 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { summaryResult } from "@/lib/mock-library";
+import { useParams, useRouter } from "next/navigation";
+import { useSummaryResult } from "@/lib/study-data";
 
 export function StudybitesSummaryPage() {
   const router = useRouter();
-  const [phase, setPhase] = useState<"generating" | "ready">("generating");
-
-  useEffect(() => {
-    if (phase !== "generating") {
-      return;
-    }
-
-    const timeoutId = window.setTimeout(() => setPhase("ready"), 2200);
-    return () => window.clearTimeout(timeoutId);
-  }, [phase]);
+  const params = useParams<{ fileId: string }>();
+  const { summary, phase, setPhase } = useSummaryResult(params?.fileId);
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,#f8fbff_0%,#f4f6fb_34%,#f6f8fc_100%)] font-cairo text-[#0f172a] dark:bg-[radial-gradient(circle_at_top,#111a32_0%,#0d1528_38%,#09111f_100%)] dark:text-[#edf2ff]">
       <div className="mx-auto max-w-[1120px] px-4 pt-4 pb-10 md:px-6 md:pt-6">
         <div className="flex items-center justify-between gap-4">
           <Link
-            href="/library/files/6260097"
+            href={`/library/files/${params?.fileId ?? "6260097"}`}
             className="inline-flex items-center gap-2 text-[17px] text-[#475467] no-underline dark:text-[#c5d0e2]"
           >
             <BackChevron />
@@ -32,7 +23,7 @@ export function StudybitesSummaryPage() {
 
           <button
             type="button"
-            onClick={() => router.push("/library/files/6260097")}
+            onClick={() => router.push(`/library/files/${params?.fileId ?? "6260097"}`)}
             className="flex size-10 items-center justify-center rounded-[10px] border border-[#e6ebf4] bg-white/90 shadow-[0_4px_14px_rgba(117,130,164,0.12)] dark:border-[#2d3a54] dark:bg-[#182338]/92"
             aria-label="Close summary"
           >
@@ -42,7 +33,7 @@ export function StudybitesSummaryPage() {
 
         <div className="mt-6">
           <div className="text-[15px] font-semibold text-[#94a3b8] dark:text-[#9fb0c9]">
-            {summaryResult.title}
+            {summary.title}
           </div>
           <h1 className="mt-2 text-[28px] leading-tight font-semibold tracking-[-0.02em] text-[#334155] dark:text-white md:text-[48px] md:leading-[1.06]">
             Summary
@@ -75,16 +66,16 @@ export function StudybitesSummaryPage() {
           <section className="order-2 space-y-6 lg:order-1">
             <div className="rounded-[28px] border border-[#edf1f7] bg-white p-6 shadow-[0_18px_48px_rgba(103,109,167,0.12)] dark:border-[#26344e] dark:bg-[#182338]">
               <div className="flex flex-wrap items-center gap-2.5">
-                <MetaChip>{summaryResult.readTime}</MetaChip>
-                <MetaChip>{summaryResult.language}</MetaChip>
-                <MetaChip>{summaryResult.style}</MetaChip>
+                <MetaChip>{summary.readTime}</MetaChip>
+                <MetaChip>{summary.language}</MetaChip>
+                <MetaChip>{summary.style}</MetaChip>
               </div>
               <p className="mt-5 text-[17px] leading-8 text-[#475467] dark:text-[#d7def0]">
-                {summaryResult.overview}
+                {summary.overview}
               </p>
             </div>
 
-            {summaryResult.sections.map((section) => (
+            {summary.sections.map((section) => (
               <article
                 key={section.title}
                 className="rounded-[28px] border border-[#edf1f7] bg-white p-6 shadow-[0_18px_48px_rgba(103,109,167,0.12)] dark:border-[#26344e] dark:bg-[#182338]"
@@ -103,7 +94,7 @@ export function StudybitesSummaryPage() {
             <div className="rounded-[28px] border border-[#edf1f7] bg-white p-6 shadow-[0_18px_48px_rgba(103,109,167,0.12)] dark:border-[#26344e] dark:bg-[#182338]">
               <h2 className="text-[22px] font-bold text-[#334155] dark:text-white">Key Points</h2>
               <ul className="mt-4 space-y-3">
-                {summaryResult.keyPoints.map((point) => (
+                {summary.keyPoints.map((point) => (
                   <li
                     key={point}
                     className="rounded-[18px] bg-[#f8faff] px-4 py-4 text-[15px] leading-7 text-[#475467] dark:bg-[#111a2f] dark:text-[#d7def0]"
@@ -119,12 +110,12 @@ export function StudybitesSummaryPage() {
                 Summary actions
               </div>
               <div className="mt-4 space-y-3">
-                <ActionButton label="Back to File" onClick={() => router.push("/library/files/6260097")} />
+                <ActionButton label="Back to File" onClick={() => router.push(`/library/files/${params?.fileId ?? "6260097"}`)} />
                 <ActionButton
                   label="Open MCQs"
                   onClick={() =>
                     router.push(
-                      "/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam",
+                      `/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/${params?.fileId ?? "6260097"}/exam`,
                     )
                   }
                 />

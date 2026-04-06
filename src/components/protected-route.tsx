@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/lib/mock-auth";
+import { useAuth } from "@/lib/auth";
 
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const router = useRouter();

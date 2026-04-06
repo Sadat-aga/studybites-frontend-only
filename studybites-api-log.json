@@ -1,0 +1,608 @@
+[GET] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library.json => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=247c7206ac0d4a1d9e2ce1bca9e2e811,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.20140806443455173,sentry-sample_rate=0.2
+    sentry-trace: 247c7206ac0d4a1d9e2ce1bca9e2e811-a4fe4009d0bdb5a7-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/api/geoLocation/getGeoLocation => [200] 
+  Request headers:
+    sentry-trace: 247c7206ac0d4a1d9e2ce1bca9e2e811-90642907900ed19f-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=247c7206ac0d4a1d9e2ce1bca9e2e811,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.20140806443455173,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/_next/static/css/d22c78812ae11ed3.css => [200] 
+  Request headers:
+    sentry-trace: 247c7206ac0d4a1d9e2ce1bca9e2e811-9fdc6b105fe838f5-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=247c7206ac0d4a1d9e2ce1bca9e2e811,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.20140806443455173,sentry-sample_rate=0.2
+[HEAD] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library.json => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=247c7206ac0d4a1d9e2ce1bca9e2e811,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.20140806443455173,sentry-sample_rate=0.2
+    sentry-trace: 247c7206ac0d4a1d9e2ce1bca9e2e811-bc42188d45779988-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/buildCheck => [200] 
+  Request headers:
+    sentry-trace: 247c7206ac0d4a1d9e2ce1bca9e2e811-a3316e353f558349-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=247c7206ac0d4a1d9e2ce1bca9e2e811,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.20140806443455173,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library/files/6260097.json?file-id=6260097 => [307] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=56567e31c4824f6a898a6478f378ac5a,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.6809071522273306,sentry-sample_rate=0.2
+    sentry-trace: 56567e31c4824f6a898a6478f378ac5a-923b9a29fecca67c-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/date-of-birth.json => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=dda1396ee59c420ea2a1d9a006cd1977,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.4416145794532992,sentry-sample_rate=0.2
+    sentry-trace: dda1396ee59c420ea2a1d9a006cd1977-ad4bbc04a2a3eba9-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/_next/static/css/f0fccd64239e24a9.css => [200] 
+  Request headers:
+    sentry-trace: dda1396ee59c420ea2a1d9a006cd1977-b9a0537518c498b5-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=dda1396ee59c420ea2a1d9a006cd1977,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.4416145794532992,sentry-sample_rate=0.2
+[HEAD] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/date-of-birth.json => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=dda1396ee59c420ea2a1d9a006cd1977,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.4416145794532992,sentry-sample_rate=0.2
+    sentry-trace: dda1396ee59c420ea2a1d9a006cd1977-85805add7bdef981-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/buildCheck => [307] 
+  Request headers:
+    sentry-trace: dda1396ee59c420ea2a1d9a006cd1977-a0fd7d16472d0822-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/date-of-birth
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=dda1396ee59c420ea2a1d9a006cd1977,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.4416145794532992,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/date-of-birth => [200] 
+  Request headers:
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    referer: https://app.studybites.ai/en/date-of-birth
+[HEAD] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library.json => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/date-of-birth
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=e7d4dfec6990403191f82d13e407fa8d,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.18050500177340323,sentry-sample_rate=0.2
+    sentry-trace: e7d4dfec6990403191f82d13e407fa8d-83a5c4a7f98bd6c6-1
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/buildCheck => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sentry-trace: e7d4dfec6990403191f82d13e407fa8d-9d613c312a9c8f4d-1
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=e7d4dfec6990403191f82d13e407fa8d,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.18050500177340323,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/_next/static/media/globe.327c24ce.svg => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[GET] https://app.studybites.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsaudi-flag.7fec1420.png&w=16&q=75 => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[GET] https://app.studybites.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fus-flag.80acb107.png&w=16&q=75 => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[GET] https://app.studybites.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgerman-flag.5b27275f.png&w=16&q=75 => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[GET] https://app.studybites.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fturkey-flag.fb89bdcd.png&w=16&q=75 => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[GET] https://app.studybites.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspain-flag.c4a59473.png&w=16&q=75 => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[GET] https://app.studybites.ai/_next/static/media/more.a962d2f0.svg => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[HEAD] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library.json => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/date-of-birth
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=e7d4dfec6990403191f82d13e407fa8d,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.18050500177340323,sentry-sample_rate=0.2
+    sentry-trace: e7d4dfec6990403191f82d13e407fa8d-83a5c4a7f98bd6c6-1
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/_next/static/media/globe.327c24ce.svg => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[GET] https://app.studybites.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgerman-flag.5b27275f.png&w=16&q=75 => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[GET] https://app.studybites.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fturkey-flag.fb89bdcd.png&w=16&q=75 => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[GET] https://app.studybites.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsaudi-flag.7fec1420.png&w=16&q=75 => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[GET] https://app.studybites.ai/buildCheck => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sentry-trace: e7d4dfec6990403191f82d13e407fa8d-9d613c312a9c8f4d-1
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=e7d4dfec6990403191f82d13e407fa8d,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.18050500177340323,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspain-flag.c4a59473.png&w=16&q=75 => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[GET] https://app.studybites.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fus-flag.80acb107.png&w=16&q=75 => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[GET] https://app.studybites.ai/_next/static/media/more.a962d2f0.svg => [FAILED] net::ERR_ABORTED
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[HEAD] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library.json => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=6add93017d0d4b6b98a6befe4223f115,sentry-org_id=4503932970467328,sentry-transaction=%2Flibrary,sentry-sampled=false,sentry-sample_rand=0.34408594398183356,sentry-sample_rate=0.2
+    sentry-trace: 6add93017d0d4b6b98a6befe4223f115-989a0bda4a62ede0-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library.json => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    purpose: prefetch
+    x-middleware-prefetch: 1
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=6add93017d0d4b6b98a6befe4223f115,sentry-org_id=4503932970467328,sentry-transaction=%2Flibrary,sentry-sampled=false,sentry-sample_rand=0.34408594398183356,sentry-sample_rate=0.2
+    sentry-trace: 6add93017d0d4b6b98a6befe4223f115-b9f128f12a626bf3-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/api/geoLocation/getGeoLocation => [200] 
+  Request headers:
+    sentry-trace: 6add93017d0d4b6b98a6befe4223f115-82151e1e19a24edd-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=6add93017d0d4b6b98a6befe4223f115,sentry-org_id=4503932970467328,sentry-transaction=%2Flibrary,sentry-sampled=false,sentry-sample_rand=0.34408594398183356,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/_next/static/css/d22c78812ae11ed3.css => [200] 
+  Request headers:
+    sentry-trace: 6add93017d0d4b6b98a6befe4223f115-9b2674bc8c58ddbe-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=6add93017d0d4b6b98a6befe4223f115,sentry-org_id=4503932970467328,sentry-transaction=%2Flibrary,sentry-sampled=false,sentry-sample_rand=0.34408594398183356,sentry-sample_rate=0.2
+[HEAD] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library.json => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=6add93017d0d4b6b98a6befe4223f115,sentry-org_id=4503932970467328,sentry-transaction=%2Flibrary,sentry-sampled=false,sentry-sample_rand=0.34408594398183356,sentry-sample_rate=0.2
+    sentry-trace: 6add93017d0d4b6b98a6befe4223f115-989a0bda4a62ede0-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library.json => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    purpose: prefetch
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=6add93017d0d4b6b98a6befe4223f115,sentry-org_id=4503932970467328,sentry-transaction=%2Flibrary,sentry-sampled=false,sentry-sample_rand=0.34408594398183356,sentry-sample_rate=0.2
+    sentry-trace: 6add93017d0d4b6b98a6befe4223f115-a68c3896c58c5cea-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library/files/6260097.json?file-id=6260097 => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=aeb35e209d594b7989010e5aa18476ab,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.7042745015100245,sentry-sample_rate=0.2
+    sentry-trace: aeb35e209d594b7989010e5aa18476ab-a7ca1c71a48257d3-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/buildCheck => [200] 
+  Request headers:
+    sentry-trace: aeb35e209d594b7989010e5aa18476ab-8fb890a505953f0b-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=aeb35e209d594b7989010e5aa18476ab,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.7042745015100245,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library/files/6260097.json?file-id=6260097 => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=a2d85b807c4646489d9689c004abd1db,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.42112780846953557,sentry-sample_rate=0.2
+    sentry-trace: a2d85b807c4646489d9689c004abd1db-bbdc3ab5c00fe36c-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/buildCheck => [200] 
+  Request headers:
+    sentry-trace: a2d85b807c4646489d9689c004abd1db-905ee2b9f4e76c24-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=a2d85b807c4646489d9689c004abd1db,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.42112780846953557,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library/files/6260097.json?file-id=6260097 => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=7703bd86976845ccaeaa09daeebdfa72,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.7845859531245185,sentry-sample_rate=0.2
+    sentry-trace: 7703bd86976845ccaeaa09daeebdfa72-a31104b306ec3aa7-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/buildCheck => [200] 
+  Request headers:
+    sentry-trace: 7703bd86976845ccaeaa09daeebdfa72-822e9e90f5b52d12-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=7703bd86976845ccaeaa09daeebdfa72,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.7845859531245185,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam.json?isFileView=&id=cd78ee55-9807-46e5-8352-d863a94d92c9&folder-id=6260097 => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b60b3e1772424add9be20a0c6d10f9bd,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.11073634198909721,sentry-sample_rate=0.2
+    sentry-trace: b60b3e1772424add9be20a0c6d10f9bd-823357c87aa4582d-1
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/_next/static/css/9291fda833a21be3.css => [200] 
+  Request headers:
+    sentry-trace: b60b3e1772424add9be20a0c6d10f9bd-9bcf957bbc5baa01-1
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b60b3e1772424add9be20a0c6d10f9bd,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.11073634198909721,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/_next/static/css/637b05fa415fd1b7.css => [200] 
+  Request headers:
+    sentry-trace: b60b3e1772424add9be20a0c6d10f9bd-b971d9e3c772e04b-1
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b60b3e1772424add9be20a0c6d10f9bd,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.11073634198909721,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/buildCheck => [200] 
+  Request headers:
+    sentry-trace: b60b3e1772424add9be20a0c6d10f9bd-a4cebc52e6a03215-1
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b60b3e1772424add9be20a0c6d10f9bd,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.11073634198909721,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/assets/sounds/correct.wav => [200] 
+  Request headers:
+    sentry-trace: b60b3e1772424add9be20a0c6d10f9bd-90445fd2bacfd95d-1
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b60b3e1772424add9be20a0c6d10f9bd,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.11073634198909721,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/assets/sounds/streak.mp3 => [200] 
+  Request headers:
+    sentry-trace: b60b3e1772424add9be20a0c6d10f9bd-ae3ebe3afecc95b6-1
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b60b3e1772424add9be20a0c6d10f9bd,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.11073634198909721,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/assets/sounds/finished-round.mp3 => [200] 
+  Request headers:
+    sentry-trace: b60b3e1772424add9be20a0c6d10f9bd-b080804474c3e62a-1
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b60b3e1772424add9be20a0c6d10f9bd,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.11073634198909721,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/assets/sounds/rolling.wav => [200] 
+  Request headers:
+    sentry-trace: b60b3e1772424add9be20a0c6d10f9bd-adf0b3e4c8c50882-1
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b60b3e1772424add9be20a0c6d10f9bd,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.11073634198909721,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/assets/sounds/post-round.wav => [200] 
+  Request headers:
+    sentry-trace: b60b3e1772424add9be20a0c6d10f9bd-8b34334e104093c3-1
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b60b3e1772424add9be20a0c6d10f9bd,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.11073634198909721,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/assets/sounds/paper.wav => [200] 
+  Request headers:
+    sentry-trace: b60b3e1772424add9be20a0c6d10f9bd-a9d6f3216ca2fbbb-1
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b60b3e1772424add9be20a0c6d10f9bd,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.11073634198909721,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/assets/sounds/learning-process-1.wav => [200] 
+  Request headers:
+    sentry-trace: b60b3e1772424add9be20a0c6d10f9bd-8e044ea938cd7f82-1
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b60b3e1772424add9be20a0c6d10f9bd,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.11073634198909721,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/assets/sounds/learning-process-2.wav => [200] 
+  Request headers:
+    sentry-trace: b60b3e1772424add9be20a0c6d10f9bd-b57b8398712113d9-1
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b60b3e1772424add9be20a0c6d10f9bd,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.11073634198909721,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/assets/sounds/learning-process-3.wav => [200] 
+  Request headers:
+    sentry-trace: b60b3e1772424add9be20a0c6d10f9bd-a2ce6bd8f0004fe5-1
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b60b3e1772424add9be20a0c6d10f9bd,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.11073634198909721,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/assets/sounds/finished-round.mp3 => [200] 
+  Request headers:
+    sentry-trace: b60b3e1772424add9be20a0c6d10f9bd-ba7f2f867caf1de7-1
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b60b3e1772424add9be20a0c6d10f9bd,sentry-org_id=4503932970467328,sentry-sampled=true,sentry-sample_rand=0.11073634198909721,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/_next/static/media/bito-scream.83ae0ae6.svg => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[GET] https://app.studybites.ai/_next/static/media/bito-scream.83ae0ae6.svg => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+[GET] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/learn.json?isFileView=&id=cd78ee55-9807-46e5-8352-d863a94d92c9&folder-id=6260097 => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam?isFileView
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=0cf7f84979e040a994cd86eac75cc998,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.8025977650953713,sentry-sample_rate=0.2
+    sentry-trace: 0cf7f84979e040a994cd86eac75cc998-93696e49cef1a3d0-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/buildCheck => [200] 
+  Request headers:
+    sentry-trace: 0cf7f84979e040a994cd86eac75cc998-b76e4cf864a4e2ff-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/learn?isFileView
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=0cf7f84979e040a994cd86eac75cc998,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.8025977650953713,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library/files/6260097.json?file-id=6260097 => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/learn?isFileView
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=ae995151446545f4bcb6fdb3907ac50c,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.22468528324916592,sentry-sample_rate=0.2
+    sentry-trace: ae995151446545f4bcb6fdb3907ac50c-a02fc865bdda7441-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/buildCheck => [200] 
+  Request headers:
+    sentry-trace: ae995151446545f4bcb6fdb3907ac50c-ae1c2af74fd8371f-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=ae995151446545f4bcb6fdb3907ac50c,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.22468528324916592,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library/files/6260097.json?file-id=6260097 => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=db2635b7f85042f0ac1aecc34f4d3f98,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.6407099534575641,sentry-sample_rate=0.2
+    sentry-trace: db2635b7f85042f0ac1aecc34f4d3f98-ad543dc9ccd75be3-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/buildCheck => [200] 
+  Request headers:
+    sentry-trace: db2635b7f85042f0ac1aecc34f4d3f98-8905d95573021393-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=db2635b7f85042f0ac1aecc34f4d3f98,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.6407099534575641,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library/files/6260097/summary.json?file-id=6260097 => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b4925f40e2424d26bd8a025185d483c0,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.8111157163136363,sentry-sample_rate=0.2
+    sentry-trace: b4925f40e2424d26bd8a025185d483c0-a9779c1ff191f89f-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/buildCheck => [200] 
+  Request headers:
+    sentry-trace: b4925f40e2424d26bd8a025185d483c0-9109ca55e47eba41-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097/summary
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=b4925f40e2424d26bd8a025185d483c0,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.8111157163136363,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library/files/6260097.json?showRating=true&file-id=6260097 => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097/summary
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=3115b7093c8d4644a8633c791249bb99,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.34156670952819324,sentry-sample_rate=0.2
+    sentry-trace: 3115b7093c8d4644a8633c791249bb99-9b224d2c80f072f4-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/buildCheck => [200] 
+  Request headers:
+    sentry-trace: 3115b7093c8d4644a8633c791249bb99-abfad11068c1682e-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097?showRating=true
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=3115b7093c8d4644a8633c791249bb99,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.34156670952819324,sentry-sample_rate=0.2
+[GET] https://app.studybites.ai/_next/data/JzFTAp1ItRJvGh7mXa5rJ/en/library/files/6260097.json?file-id=6260097 => [200] 
+  Request headers:
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097?showRating=true
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=9141da356e474312a03b02ae038caed6,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.36713629916856316,sentry-sample_rate=0.2
+    sentry-trace: 9141da356e474312a03b02ae038caed6-8d5604d400eb8b27-0
+    x-nextjs-data: 1
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+[GET] https://app.studybites.ai/buildCheck => [200] 
+  Request headers:
+    sentry-trace: 9141da356e474312a03b02ae038caed6-988e55bbdd870fec-0
+    sec-ch-ua-platform: "Linux"
+    referer: https://app.studybites.ai/en/library/files/6260097
+    user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+    sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+    sec-ch-ua-mobile: ?0
+    baggage: sentry-environment=production,sentry-public_key=d5954eeef71145bdb929079c6a53b0bd,sentry-trace_id=9141da356e474312a03b02ae038caed6,sentry-org_id=4503932970467328,sentry-sampled=false,sentry-sample_rand=0.36713629916856316,sentry-sample_rate=0.2
