@@ -5,9 +5,31 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import { useTheme, type ThemePreference } from "@/components/theme-provider";
 import { useAuth } from "@/lib/auth";
-import { uploadDocumentAndProcess } from "@/lib/documents";
 import { DEFAULT_LIBRARY_DOCUMENT, useLibraryDocuments } from "@/lib/study-data";
 import { cn } from "@/lib/utils";
+
+type MockUploadDocumentOptions = {
+  userId?: string;
+  file?: File | null;
+  existingFolderId?: string;
+  onStatusChange?: (message: string) => void;
+};
+
+async function uploadDocumentAndProcess({
+  file,
+  existingFolderId,
+  onStatusChange,
+}: MockUploadDocumentOptions) {
+  onStatusChange?.("Uploading to mock workspace...");
+  return {
+    studySetId: existingFolderId ?? DEFAULT_LIBRARY_DOCUMENT.studySetId,
+    folderId: existingFolderId ?? DEFAULT_LIBRARY_DOCUMENT.id,
+    storagePath: "mock-storage-path",
+    fileName: file?.name ?? "Mock Study.pdf",
+    publicUrl: "",
+    extractedText: "",
+  };
+}
 
 export function StudybitesLibraryPage() {
   const { logout, user } = useAuth();
@@ -76,9 +98,13 @@ export function StudybitesLibraryPage() {
     }
 
     try {
-      const result = await uploadDocumentAndProcess({ userId: user?.id, file });
+      const result = await uploadDocumentAndProcess({
+        userId: user?.id,
+        file,
+        onStatusChange: showNotice,
+      });
       setLibraryHidden(false);
-      showNotice(`${result.fileName} uploaded. Processing started.`);
+      showNotice(`${result.fileName} uploaded to cloud.`);
     } catch (error) {
       showNotice(error instanceof Error ? error.message : "Upload failed.");
     }
@@ -132,7 +158,7 @@ export function StudybitesLibraryPage() {
               alt="bito logo"
               width={54}
               height={34}
-              className="h-[34px] w-auto -rotate-[8deg]"
+              className="-rotate-[8deg]"
             />
             <button
               type="button"
@@ -264,6 +290,7 @@ export function StudybitesLibraryPage() {
           <input
             ref={uploadInputRef}
             type="file"
+            accept="application/pdf,.pdf"
             className="hidden"
             onChange={(event) => {
               void handleUploadSelection(event.target.files?.[0]);

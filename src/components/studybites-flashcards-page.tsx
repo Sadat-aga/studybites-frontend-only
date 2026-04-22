@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type ReactNode } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { useAuth } from "@/lib/auth";
 import { useFlashcardsDeck } from "@/lib/study-data";
 import type { Flashcard } from "@/types/auth";
 import { cn } from "@/lib/utils";
@@ -20,7 +21,13 @@ type FlashcardSnapshot = {
 export function StudybitesFlashcardsPage() {
   const router = useRouter();
   const params = useParams<{ fileId: string }>();
-  const cards = useFlashcardsDeck(params?.fileId);
+  const { user } = useAuth();
+  const {
+    cards,
+    status: deckStatus,
+    errorMessage: deckErrorMessage,
+  } = useFlashcardsDeck(params?.fileId, user?.id);
+  const filePageHref = params?.fileId ? `/library/files/${params.fileId}` : "/library";
   const [pendingInitial, setPendingInitial] = useState<number[]>([]);
   const [reviewQueue, setReviewQueue] = useState<number[]>([]);
   const [completedCount, setCompletedCount] = useState(0);
@@ -175,8 +182,22 @@ export function StudybitesFlashcardsPage() {
     return card?.example ?? "Example opened for this flashcard.";
   }
 
-  if (!deckReady) {
-    return null;
+  if (deckStatus === "loading") {
+    return (
+      <FlashcardsStatusScreen
+        message="Preparing your flashcards..."
+        onBack={() => router.push(filePageHref)}
+      />
+    );
+  }
+
+  if (deckStatus === "error" || deckStatus === "empty") {
+    return (
+      <FlashcardsStatusScreen
+        message={deckErrorMessage ?? "Flashcards are unavailable for this file right now."}
+        onBack={() => router.push(filePageHref)}
+      />
+    );
   }
 
   if (queueComplete || card == null) {
@@ -185,7 +206,7 @@ export function StudybitesFlashcardsPage() {
         flaggedCount={badCards.length}
         masteredCount={masteredIds.length}
         reviewedCount={completedCount}
-        onBack={() => router.push("/library/files/6260097")}
+        onBack={() => router.push(filePageHref)}
         onRestart={() => {
           setPendingInitial(cards.map((_, index) => index));
           setReviewQueue([]);
@@ -210,7 +231,7 @@ export function StudybitesFlashcardsPage() {
         <header className="flex items-start justify-between gap-3">
           <RoundIconButton
             ariaLabel="Close"
-            onClick={() => router.push("/library/files/6260097")}
+            onClick={() => router.push(filePageHref)}
           >
             <CloseIcon />
           </RoundIconButton>
@@ -417,6 +438,39 @@ export function StudybitesFlashcardsPage() {
           </div>
         </div>
       ) : null}
+    </main>
+  );
+}
+
+function FlashcardsStatusScreen({
+  message,
+  onBack,
+}: {
+  message: string;
+  onBack: () => void;
+}) {
+  return (
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top,#f8faff_0%,#eef2fb_48%,#e8eef9_100%)] font-cairo text-[#344054] dark:bg-[radial-gradient(circle_at_top,#10192f_0%,#0d1528_42%,#09111f_100%)] dark:text-[#d7def0]">
+      <div className="mx-auto flex min-h-screen max-w-[640px] items-center px-5 py-10">
+        <div className="w-full rounded-[30px] border border-[#e2e8f4] bg-white/94 px-7 py-8 text-center shadow-[0_22px_58px_rgba(103,109,167,0.16)] dark:border-[#2a3953] dark:bg-[#182338]/96">
+          <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-[#eef2ff] text-[#6061f0] dark:bg-[#202c43] dark:text-[#b9b8ff]">
+            <SparkleIcon />
+          </div>
+          <h1 className="mt-5 text-[26px] font-bold text-[#273142] dark:text-white">
+            Flashcards unavailable
+          </h1>
+          <p className="mt-3 text-[16px] leading-7 text-[#667085] dark:text-[#b5c2d8]">
+            {message}
+          </p>
+          <button
+            type="button"
+            onClick={onBack}
+            className="mt-6 rounded-[16px] bg-[linear-gradient(90deg,#635ef6_0%,#726cf7_100%)] px-5 py-3 text-base font-bold text-white shadow-[0_16px_34px_rgba(96,97,240,0.22)]"
+          >
+            Back to file
+          </button>
+        </div>
+      </div>
     </main>
   );
 }

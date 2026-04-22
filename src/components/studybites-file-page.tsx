@@ -2,15 +2,47 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type MouseEvent, type ReactNode, type UIEvent } from "react";
 import { useTheme, type ThemePreference } from "@/components/theme-provider";
 import { useAuth } from "@/lib/auth";
-import { uploadDocumentAndProcess } from "@/lib/documents";
+import { beginMcqPracticeLaunch, clearCachedMcqSession } from "@/lib/mcq-session";
 import { useFilePageData } from "@/lib/study-data";
 import { cn } from "@/lib/utils";
 
+type MockUploadDocumentOptions = {
+  userId?: string;
+  file?: File | null;
+  existingFolderId?: string;
+  onStatusChange?: (message: string) => void;
+};
+
+async function uploadDocumentAndProcess({
+  file,
+  existingFolderId,
+  onStatusChange,
+}: MockUploadDocumentOptions) {
+  onStatusChange?.("Uploading to mock workspace...");
+  return {
+    studySetId: existingFolderId ?? "mock-study-set-001",
+    folderId: existingFolderId ?? "mock-folder-001",
+    storagePath: "mock-storage-path",
+    fileName: file?.name ?? "Mock Study.pdf",
+    publicUrl: "",
+    extractedText: "",
+  };
+}
+
+async function generateContentForFolder(_fileId?: string) {
+  return {
+    mcqQuestions: [],
+    flashcards: [],
+    summary: null,
+  };
+}
+
 export function StudybitesFilePage() {
+  const router = useRouter();
   const { logout, user } = useAuth();
   const params = useParams<{ fileId: string }>();
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -24,13 +56,41 @@ export function StudybitesFilePage() {
   const [fileMenuOpen, setFileMenuOpen] = useState(false);
   const [mobileTopSlide, setMobileTopSlide] = useState<0 | 1>(0);
   const [notice, setNotice] = useState("");
+  const [isGeneratingSummary, setIsGeneratingSummary] = useState(false);
   const [locale, setLocale] = useState("English");
   const [infoPanel, setInfoPanel] = useState<null | "account" | "idea" | "updates" | "help">(
     null,
   );
   const uploadInputRef = useRef<HTMLInputElement | null>(null);
   const mobileTopDeckRef = useRef<HTMLDivElement | null>(null);
-  const { document, activities, progress } = useFilePageData(params?.fileId, user?.id);
+  const {
+    document,
+    activities,
+    progress,
+    status: fileStatus,
+    errorMessage: fileErrorMessage,
+  } = useFilePageData(params?.fileId, user?.id);
+  const fileReady = fileStatus === "ready";
+  const mcqPracticeHref = fileReady ? activities[0]?.href : undefined;
+  const flashcardsHref = fileReady ? activities[1]?.href : undefined;
+  const pageTitle =
+    fileStatus === "ready"
+      ? document.slug
+      : fileStatus === "loading"
+        ? "Loading document..."
+        : "File unavailable";
+  const mcqDescription =
+    fileStatus === "ready"
+      ? activities[0]?.description ?? "MCQs ready"
+      : fileStatus === "loading"
+        ? "Preparing MCQs"
+        : "Unavailable";
+  const flashcardsDescription =
+    fileStatus === "ready"
+      ? activities[1]?.description ?? "Flashcards ready"
+      : fileStatus === "loading"
+        ? "Preparing flashcards"
+        : "Unavailable";
 
   useEffect(() => {
     if (!notice) {
@@ -49,6 +109,55 @@ export function StudybitesFilePage() {
     } catch {
       setNotice("Share link ready");
     }
+  }
+
+  async function handleRecapClick() {
+    if (!params?.fileId || isGeneratingSummary || !fileReady) {
+      return;
+    }
+
+    setIsGeneratingSummary(true);
+    setNotice("Generating study materials...");
+
+    try {
+      await generateContentForFolder(params.fileId);
+      setNotice("Summary, MCQs, and flashcards generated.");
+      router.push(`/library/files/${params.fileId}/summary`);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Generation failed.");
+      setIsGeneratingSummary(false);
+      return;
+    }
+
+    setIsGeneratingSummary(false);
+  }
+
+  function handlePracticeClick() {
+    if (!params?.fileId || !mcqPracticeHref || !fileReady) {
+      setNotice(
+        fileStatus === "loading"
+          ? "This file is still loading."
+          : fileErrorMessage ?? "This file isn't ready for MCQ practice yet.",
+      );
+      return;
+    }
+
+    clearCachedMcqSession(params.fileId);
+    beginMcqPracticeLaunch(params.fileId);
+    router.push(mcqPracticeHref);
+  }
+
+  function handleFlashcardsClick() {
+    if (!flashcardsHref || !fileReady) {
+      setNotice(
+        fileStatus === "loading"
+          ? "This file is still loading."
+          : fileErrorMessage ?? "This file isn't ready for flashcards yet.",
+      );
+      return;
+    }
+
+    router.push(flashcardsHref);
   }
 
   return (
@@ -87,7 +196,7 @@ export function StudybitesFilePage() {
               alt="bito logo"
               width={54}
               height={34}
-              className="h-[34px] w-auto -rotate-[8deg]"
+              className="-rotate-[8deg]"
             />
             <button
               type="button"
@@ -215,6 +324,7 @@ export function StudybitesFilePage() {
           <input
             ref={uploadInputRef}
             type="file"
+            accept="application/pdf,.pdf"
             className="hidden"
             onChange={(event) => {
               const file = event.target.files?.[0];
@@ -228,8 +338,9 @@ export function StudybitesFilePage() {
                 userId: user?.id,
                 file,
                 existingFolderId: params?.fileId,
+                onStatusChange: setNotice,
               })
-                .then((result) => setNotice(`${result.fileName} uploaded. Processing started.`))
+                .then((result) => setNotice(`${result.fileName} uploaded to cloud.`))
                 .catch((error: unknown) =>
                   setNotice(error instanceof Error ? error.message : "Upload failed."),
                 );
@@ -272,8 +383,14 @@ export function StudybitesFilePage() {
               </div>
 
               <h1 className="hidden text-[28px] leading-tight font-semibold tracking-[-0.02em] text-[#334155] dark:text-white md:text-[52px] md:leading-[1.08] lg:block">
-                {document.slug}
+                {pageTitle}
               </h1>
+
+              {!fileReady && fileErrorMessage ? (
+                <div className="mt-4 rounded-[18px] border border-[#f4d2d2] bg-[#fff7f7] px-4 py-3 text-[14px] font-semibold text-[#b54747] dark:border-[#5c2f3a] dark:bg-[#2a1620] dark:text-[#ffb4b4]">
+                  {fileErrorMessage}
+                </div>
+              ) : null}
 
               <div className="mt-1 lg:hidden">
                 <MobileTopDeck
@@ -309,28 +426,35 @@ export function StudybitesFilePage() {
                   <div className="mt-4 grid grid-cols-2 gap-3.5 md:gap-5">
                     <ActivityCard
                       title="MCQs"
-                      description="40 Questions"
+                      description={mcqDescription}
                       ctaLabel="Practice"
-                      href={activities[0]?.href}
-                      editHref="/library/files/6260097/mcq/content"
+                      onClick={handlePracticeClick}
+                      editHref={
+                        fileReady && params?.fileId
+                          ? `/library/files/${params.fileId}/mcq/content`
+                          : undefined
+                      }
                       tone="indigo"
+                      disabled={!fileReady}
                       icon={<McqArtwork />}
                     />
                     <ActivityCard
                       title="Flashcards"
-                      description="30 Flashcards"
+                      description={flashcardsDescription}
                       ctaLabel="Memorize"
-                      href={activities[1]?.href}
+                      onClick={handleFlashcardsClick}
                       tone="blue"
                       onEdit={() => setEditorOpen("Flashcards")}
+                      disabled={!fileReady}
                       icon={<FlashcardsArtwork />}
                     />
                     <ActivityCard
                       title="Summaries"
                       description="1 Summary"
-                      ctaLabel="Recap"
+                      ctaLabel={isGeneratingSummary ? "Generating..." : "Recap"}
                       tone="pink"
-                      href={activities[2]?.href}
+                      onClick={handleRecapClick}
+                      disabled={isGeneratingSummary || !fileReady}
                       icon={<SummaryArtwork />}
                     />
                     <ActivityCard

@@ -1,0 +1,453 @@
+import type {
+  DocumentSummary,
+  ExamQuestion,
+  FileActivity,
+  FileProgressMetric,
+  Flashcard,
+  LibraryDocument,
+  McqContentItem,
+  McqContentStat,
+} from "@/types/auth";
+
+export const FALLBACK_STUDY_SET_ID = "cd78ee55-9807-46e5-8352-d863a94d92c9";
+export const FALLBACK_FOLDER_ID = "6260097";
+
+export const MOCK_LIBRARY_DOCUMENT: LibraryDocument = {
+  id: FALLBACK_FOLDER_ID,
+  studySetId: FALLBACK_STUDY_SET_ID,
+  name: "Pride and Prejudice Literary Analysis",
+  slug: "pride-and-prejudice-jane-austen,1",
+  icon: "📚",
+  pageCount: 515,
+  questionCount: 10,
+  flashcardCount: 6,
+  summaryCount: 1,
+  mcqProgressPercent: 10,
+  flashcardsProgressPercent: 37,
+};
+
+export const MOCK_FILE_ACTIVITIES: FileActivity[] = [
+  {
+    title: "MCQs",
+    description: "10 Questions",
+    ctaLabel: "Practice",
+    accent: "gradient",
+    href: `/library/study-set/${FALLBACK_STUDY_SET_ID}/folder/${FALLBACK_FOLDER_ID}/exam`,
+  },
+  {
+    title: "Flashcards",
+    description: "6 Flashcards",
+    ctaLabel: "Memorize",
+    href: `/library/study-set/${FALLBACK_STUDY_SET_ID}/folder/${FALLBACK_FOLDER_ID}/learn`,
+  },
+  {
+    title: "Summaries",
+    description: "1 Summary",
+    ctaLabel: "Recap",
+    href: `/library/files/${FALLBACK_FOLDER_ID}/summary`,
+  },
+  {
+    title: "Mind Maps",
+    description: "",
+    ctaLabel: "Coming Soon",
+  },
+];
+
+export const MOCK_FILE_PROGRESS: FileProgressMetric[] = [
+  { label: "MCQs", value: "10%", tone: "indigo" },
+  { label: "Flashcards", value: "37%", tone: "blue" },
+];
+
+export const MOCK_EXAM_QUESTIONS: ExamQuestion[] = [
+  {
+    id: "mock-q1",
+    title: MOCK_LIBRARY_DOCUMENT.name,
+    current: 0,
+    total: 10,
+    topic: "Themes",
+    difficulty: "Easy",
+    prompt: "What is the primary focus of Pride and Prejudice?",
+    choices: [
+      { id: "a", label: "Religious dogma and philosophy" },
+      { id: "b", label: "Scientific discovery and progress" },
+      { id: "c", label: "Domestic life and human condition" },
+      { id: "d", label: "Political intrigue and warfare" },
+    ],
+    hint: "Think about the social world the Bennet family moves through.",
+    source: "The novel centers on family, relationships, manners, and marriage.",
+    correctChoiceId: "c",
+    assistantTopic: "themes and social commentary",
+    explanationBullets: [
+      "The novel focuses on courtship, class, and family life.",
+      "Its conflicts grow from pride, prejudice, and social expectations rather than war or religion.",
+    ],
+    wrongChoiceContrast: "The other options describe genres and subjects the novel does not center on.",
+    correctReflection: "The strongest answer is the one grounded in domestic and social life.",
+    takeaway: "Pride and Prejudice is driven by social observation and human relationships.",
+    followUpPrompt: "How do class and marriage shape the novel's conflicts?",
+  },
+  {
+    id: "mock-q2",
+    title: MOCK_LIBRARY_DOCUMENT.name,
+    current: 1,
+    total: 10,
+    topic: "Character",
+    difficulty: "Easy",
+    prompt: "Which character is most closely associated with pride at the start of the novel?",
+    choices: [
+      { id: "a", label: "Mr. Collins" },
+      { id: "b", label: "Mr. Darcy" },
+      { id: "c", label: "Lydia Bennet" },
+      { id: "d", label: "Jane Bennet" },
+    ],
+    hint: "Think about the first ball and Elizabeth's first impression.",
+    source: "Darcy appears aloof and superior when he first enters the story.",
+    correctChoiceId: "b",
+    assistantTopic: "Darcy's characterization",
+    explanationBullets: [
+      "Darcy's reserved behavior is interpreted as pride.",
+      "That first impression drives much of Elizabeth's prejudice later on.",
+    ],
+    wrongChoiceContrast: "The other characters are flawed, but not introduced through the same proud social posture.",
+    correctReflection: "Darcy embodies the title's idea of pride early on.",
+    takeaway: "Initial impressions of Darcy shape the novel's emotional arc.",
+    followUpPrompt: "Why does Austen make first impressions so important?",
+  },
+  {
+    id: "mock-q3",
+    title: MOCK_LIBRARY_DOCUMENT.name,
+    current: 2,
+    total: 10,
+    topic: "Relationships",
+    difficulty: "Medium",
+    prompt: "Why is Charlotte Lucas's marriage to Mr. Collins significant?",
+    choices: [
+      { id: "a", label: "It proves Elizabeth is wrong about Charlotte" },
+      { id: "b", label: "It shows marriage can be a practical survival choice" },
+      { id: "c", label: "It causes Jane to leave Netherfield" },
+      { id: "d", label: "It reveals Mr. Collins is secretly kind" },
+    ],
+    hint: "Think about security, age, and social pressure.",
+    source: "Charlotte chooses stability over romantic idealism.",
+    correctChoiceId: "b",
+    assistantTopic: "marriage as social strategy",
+    explanationBullets: [
+      "Charlotte's choice highlights the economic reality behind many marriages.",
+      "Austen contrasts practical and romantic views of marriage through her.",
+    ],
+    wrongChoiceContrast: "The marriage matters because of its social realism, not because it transforms Collins into a better person.",
+    correctReflection: "Charlotte represents pragmatic choices available to women in her society.",
+    takeaway: "Marriage in the novel is often tied to security and status, not just love.",
+    followUpPrompt: "How does Charlotte's decision differ from Elizabeth's values?",
+  },
+  {
+    id: "mock-q4",
+    title: MOCK_LIBRARY_DOCUMENT.name,
+    current: 3,
+    total: 10,
+    topic: "Themes",
+    difficulty: "Medium",
+    prompt: "What role does first impression play in the novel?",
+    choices: [
+      { id: "a", label: "It has little effect on the plot" },
+      { id: "b", label: "It only affects Darcy" },
+      { id: "c", label: "It shapes misunderstandings and character growth" },
+      { id: "d", label: "It is used only for comic relief" },
+    ],
+    hint: "Think about Elizabeth, Darcy, and Wickham.",
+    source: "Misread motives and appearances drive the novel's conflict.",
+    correctChoiceId: "c",
+    assistantTopic: "misjudgment",
+    explanationBullets: [
+      "Characters repeatedly judge too quickly.",
+      "Correcting those impressions is central to their growth.",
+    ],
+    wrongChoiceContrast: "First impressions influence many relationships, not just Darcy's image.",
+    correctReflection: "The title itself signals how mistaken judgment drives the story.",
+    takeaway: "Austen uses first impressions to reveal bias and growth.",
+    followUpPrompt: "Which first impression causes the most damage in the plot?",
+  },
+  {
+    id: "mock-q5",
+    title: MOCK_LIBRARY_DOCUMENT.name,
+    current: 4,
+    total: 10,
+    topic: "Character",
+    difficulty: "Easy",
+    prompt: "Which Bennet sister is most impulsive and careless?",
+    choices: [
+      { id: "a", label: "Mary" },
+      { id: "b", label: "Jane" },
+      { id: "c", label: "Elizabeth" },
+      { id: "d", label: "Lydia" },
+    ],
+    hint: "Think about the elopement subplot.",
+    source: "Lydia's behavior creates one of the novel's major crises.",
+    correctChoiceId: "d",
+    assistantTopic: "Lydia Bennet",
+    explanationBullets: [
+      "Lydia is reckless and attention-seeking.",
+      "Her impulsive elopement threatens the whole family's reputation.",
+    ],
+    wrongChoiceContrast: "The other sisters have faults, but not Lydia's reckless energy.",
+    correctReflection: "Lydia embodies the danger of unchecked impulsiveness.",
+    takeaway: "Individual behavior can have family-wide consequences in Austen's world.",
+    followUpPrompt: "Why is Lydia's scandal so damaging to the Bennets?",
+  },
+  {
+    id: "mock-q6",
+    title: MOCK_LIBRARY_DOCUMENT.name,
+    current: 5,
+    total: 10,
+    topic: "Plot",
+    difficulty: "Medium",
+    prompt: "What causes Elizabeth to reassess her opinion of Darcy?",
+    choices: [
+      { id: "a", label: "Lady Catherine's criticism" },
+      { id: "b", label: "Jane's advice" },
+      { id: "c", label: "Darcy's letter after the first proposal" },
+      { id: "d", label: "Mr. Collins's warning" },
+    ],
+    hint: "Think about the turning point after Hunsford.",
+    source: "The letter provides Darcy's perspective and new facts about Wickham.",
+    correctChoiceId: "c",
+    assistantTopic: "character reevaluation",
+    explanationBullets: [
+      "The letter forces Elizabeth to confront her own prejudice.",
+      "It also reveals key truths about Darcy and Wickham.",
+    ],
+    wrongChoiceContrast: "The transformation starts with new information from Darcy himself, not from secondary characters.",
+    correctReflection: "The letter is one of the novel's major turning points.",
+    takeaway: "Truth arrives when Elizabeth is willing to question her own certainty.",
+    followUpPrompt: "Why is Darcy's letter more persuasive than other opinions?",
+  },
+  {
+    id: "mock-q7",
+    title: MOCK_LIBRARY_DOCUMENT.name,
+    current: 6,
+    total: 10,
+    topic: "Themes",
+    difficulty: "Medium",
+    prompt: "What does the novel critique most strongly?",
+    choices: [
+      { id: "a", label: "Scientific progress" },
+      { id: "b", label: "Rigid social judgment and shallow pride" },
+      { id: "c", label: "Colonial expansion" },
+      { id: "d", label: "Religious authority" },
+    ],
+    hint: "Look at how often status and appearances distort relationships.",
+    source: "Austen exposes the social damage caused by vanity, class snobbery, and hasty judgment.",
+    correctChoiceId: "b",
+    assistantTopic: "social critique",
+    explanationBullets: [
+      "The novel repeatedly critiques superficial judgments and status obsession.",
+      "These social habits distort love, reputation, and family behavior.",
+    ],
+    wrongChoiceContrast: "The story is not primarily concerned with religion, empire, or science.",
+    correctReflection: "Austen's social criticism is embedded in everyday interactions.",
+    takeaway: "The novel exposes how pride and prejudice corrupt judgment.",
+    followUpPrompt: "Which characters best represent the novel's critique of social vanity?",
+  },
+  {
+    id: "mock-q8",
+    title: MOCK_LIBRARY_DOCUMENT.name,
+    current: 7,
+    total: 10,
+    topic: "Character",
+    difficulty: "Easy",
+    prompt: "Which character is charming but ultimately deceptive?",
+    choices: [
+      { id: "a", label: "Wickham" },
+      { id: "b", label: "Bingley" },
+      { id: "c", label: "Mr. Bennet" },
+      { id: "d", label: "Georgiana Darcy" },
+    ],
+    hint: "Elizabeth initially trusts him too easily.",
+    source: "Wickham's charm hides his dishonesty and self-interest.",
+    correctChoiceId: "a",
+    assistantTopic: "Wickham",
+    explanationBullets: [
+      "Wickham is socially appealing but morally unreliable.",
+      "He helps demonstrate how first impressions can mislead.",
+    ],
+    wrongChoiceContrast: "The other characters do not combine charm with deliberate deception in the same way.",
+    correctReflection: "Wickham personifies the danger of judging by surface appeal.",
+    takeaway: "Charm without integrity is one of Austen's recurring warnings.",
+    followUpPrompt: "Why is Elizabeth so ready to believe Wickham early on?",
+  },
+  {
+    id: "mock-q9",
+    title: MOCK_LIBRARY_DOCUMENT.name,
+    current: 8,
+    total: 10,
+    topic: "Relationships",
+    difficulty: "Medium",
+    prompt: "What makes Jane and Bingley's relationship different from Elizabeth and Darcy's?",
+    choices: [
+      { id: "a", label: "It is driven more by immediate warmth and less by conflict" },
+      { id: "b", label: "It is entirely secret" },
+      { id: "c", label: "It ends in tragedy" },
+      { id: "d", label: "It is based only on money" },
+    ],
+    hint: "Compare their temperaments and the obstacles they face.",
+    source: "Jane and Bingley represent a gentler, more openly affectionate match.",
+    correctChoiceId: "a",
+    assistantTopic: "relationship contrast",
+    explanationBullets: [
+      "Jane and Bingley are openhearted and less combative.",
+      "Elizabeth and Darcy must overcome deeper misunderstanding and pride.",
+    ],
+    wrongChoiceContrast: "Jane and Bingley face separation, but not the same internal conflict as Elizabeth and Darcy.",
+    correctReflection: "Austen contrasts two kinds of romantic development through these couples.",
+    takeaway: "The novel balances gentle affection with harder-earned emotional growth.",
+    followUpPrompt: "Why does Austen pair these two courtships together?",
+  },
+  {
+    id: "mock-q10",
+    title: MOCK_LIBRARY_DOCUMENT.name,
+    current: 9,
+    total: 10,
+    topic: "Ending",
+    difficulty: "Easy",
+    prompt: "What does the ending suggest about Elizabeth and Darcy?",
+    choices: [
+      { id: "a", label: "They never truly understand each other" },
+      { id: "b", label: "Their relationship succeeds after both change and learn" },
+      { id: "c", label: "They marry mainly for convenience" },
+      { id: "d", label: "Their families reject them permanently" },
+    ],
+    hint: "Think about the growth both characters undergo.",
+    source: "The ending rewards self-knowledge, humility, and mutual respect.",
+    correctChoiceId: "b",
+    assistantTopic: "resolution",
+    explanationBullets: [
+      "Both characters become more self-aware and generous.",
+      "Their union is presented as emotionally earned, not merely convenient.",
+    ],
+    wrongChoiceContrast: "The ending affirms growth and compatibility, not permanent alienation.",
+    correctReflection: "Austen closes the novel with a relationship shaped by learning and maturity.",
+    takeaway: "The ending ties romantic fulfillment to personal growth.",
+    followUpPrompt: "How does Austen connect love with moral development by the end?",
+  },
+];
+
+export const MOCK_FLASHCARDS: Flashcard[] = [
+  {
+    id: "flash-1",
+    front: "What is a universally acknowledged truth regarding a single man of good fortune?",
+    back: "He must be in want of a wife.",
+    source: "Opening line of the novel.",
+    explanation: "Austen uses irony immediately to frame marriage as a social expectation.",
+    mnemonic: "Wealth -> gossip -> marriage.",
+    example: "Mrs. Bennet instantly treats wealthy bachelors as husbands-in-waiting.",
+  },
+  {
+    id: "flash-2",
+    front: "What flaw does Elizabeth need to overcome?",
+    back: "Her tendency to trust first impressions too strongly.",
+    source: "Elizabeth misjudges Darcy and overvalues Wickham's charm.",
+    explanation: "Her intelligence is strong, but she can still be biased.",
+    mnemonic: "Quick wit, quicker judgment.",
+    example: "Darcy's letter forces Elizabeth to rethink her confidence.",
+  },
+  {
+    id: "flash-3",
+    front: "Why is Charlotte Lucas's marriage important?",
+    back: "It shows marriage as an economic and social strategy.",
+    source: "Charlotte values stability over romance.",
+    explanation: "Austen contrasts practical marriage with ideal marriage.",
+    mnemonic: "Security over sparks.",
+    example: "Charlotte accepts Mr. Collins because her options are limited.",
+  },
+  {
+    id: "flash-4",
+    front: "What is Wickham's narrative role?",
+    back: "He reveals how charm can hide dishonesty.",
+    source: "Wickham's ease and confidence mislead Elizabeth at first.",
+    explanation: "He deepens the novel's focus on misjudgment.",
+    mnemonic: "Smooth surface, shaky core.",
+    example: "Elizabeth believes Wickham before she has full evidence.",
+  },
+  {
+    id: "flash-5",
+    front: "What does the ending reward?",
+    back: "Humility, self-knowledge, and mutual respect.",
+    source: "Darcy and Elizabeth only succeed after both grow.",
+    explanation: "Love is tied to personal development in the novel.",
+    mnemonic: "Growth before union.",
+    example: "Their final relationship is stronger because both change.",
+  },
+  {
+    id: "flash-6",
+    front: "What does Lydia's elopement threaten?",
+    back: "The Bennet family's social reputation and marriage prospects.",
+    source: "Lydia's recklessness creates a crisis for everyone.",
+    explanation: "Individual behavior has family-wide consequences in Austen's society.",
+    mnemonic: "One scandal, five sisters affected.",
+    example: "The family's standing becomes fragile after Lydia runs away.",
+  },
+];
+
+export const MOCK_SUMMARY_RESULT: DocumentSummary = {
+  title: MOCK_LIBRARY_DOCUMENT.slug,
+  readTime: "5 min read",
+  language: "English",
+  style: "Detailed and in-depth",
+  overview:
+    "Pride and Prejudice explores how class, first impressions, and social pressure shape love and judgment. Through Elizabeth Bennet and Mr. Darcy, Austen examines how pride and prejudice distort perception until both characters grow into greater self-awareness.",
+  keyPoints: [
+    "The novel critiques shallow social judgment.",
+    "Marriage is shown as both emotional and economic.",
+    "Elizabeth and Darcy must both change before their union works.",
+    "First impressions repeatedly mislead the characters.",
+  ],
+  sections: [
+    {
+      title: "Overview",
+      body:
+        "Austen builds the novel around family dynamics, class expectations, and mistaken impressions. The emotional core is Elizabeth's evolving understanding of Darcy and herself.",
+    },
+    {
+      title: "Marriage and Society",
+      body:
+        "Different couples show different motivations for marriage, from practical survival to genuine affection. Charlotte Lucas's marriage reveals the economic pressures facing women.",
+    },
+    {
+      title: "Pride and Prejudice",
+      body:
+        "Darcy's pride and Elizabeth's prejudice operate together to create conflict. Their relationship improves only when both are willing to revise their judgments.",
+    },
+    {
+      title: "Character Growth",
+      body:
+        "Elizabeth becomes more self-critical, while Darcy learns humility and generosity. Their growth is what makes the ending satisfying rather than merely convenient.",
+    },
+  ],
+  html: `
+    <h2>Overview</h2>
+    <p>Austen builds the novel around family dynamics, class expectations, and mistaken impressions. The emotional core is Elizabeth's evolving understanding of Darcy and herself.</p>
+    <h2>Marriage and Society</h2>
+    <p>Different couples show different motivations for marriage, from practical survival to genuine affection. Charlotte Lucas's marriage reveals the economic pressures facing women.</p>
+    <h2>Pride and Prejudice</h2>
+    <p>Darcy's pride and Elizabeth's prejudice operate together to create conflict. Their relationship improves only when both are willing to revise their judgments.</p>
+    <h2>Character Growth</h2>
+    <p>Elizabeth becomes more self-critical, while Darcy learns humility and generosity. Their growth is what makes the ending satisfying rather than merely convenient.</p>
+  `,
+  signedUrl: null,
+};
+
+export const MOCK_MCQ_CONTENT_ITEMS: McqContentItem[] = MOCK_EXAM_QUESTIONS.map((question, index) => ({
+  id: question.id,
+  question: question.prompt,
+  answer: question.choices.find((choice) => choice.id === question.correctChoiceId)?.label ?? "",
+  tag: question.topic,
+  difficulty: question.difficulty as "Easy" | "Medium" | "Hard",
+  status: index < 2 ? "Mastered" : index < 5 ? "Still Learning" : "Remaining",
+}));
+
+export const MOCK_MCQ_CONTENT_STATS: McqContentStat[] = [
+  { label: "Remaining", value: MOCK_MCQ_CONTENT_ITEMS.filter((item) => item.status === "Remaining").length },
+  { label: "Still Learning", value: MOCK_MCQ_CONTENT_ITEMS.filter((item) => item.status === "Still Learning").length },
+  { label: "Mastered", value: MOCK_MCQ_CONTENT_ITEMS.filter((item) => item.status === "Mastered").length },
+  { label: "All", value: MOCK_MCQ_CONTENT_ITEMS.length },
+];

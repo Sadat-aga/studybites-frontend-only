@@ -1,17 +1,28 @@
+import type { Tables } from "@/types/database";
+
 export type LoginFormValues = {
   email: string;
   password: string;
 };
 
-export type AuthUser = {
+export type DbUser = Tables<"users">;
+export type DbStudySet = Tables<"study_sets">;
+export type DbFolder = Tables<"folders">;
+export type DbMcqQuestion = Tables<"mcq_questions">;
+export type DbMcqAnswer = Tables<"mcq_answers">;
+export type DbFlashcard = Tables<"flashcards">;
+export type DbSummary = Tables<"summaries">;
+export type SupabaseSessionUser = {
   id: string;
-  email: string;
+  email: string | null;
+};
+
+export type AuthUser = Pick<
+  DbUser,
+  "id" | "email" | "locale" | "date_of_birth" | "onboarding_dob_completed" | "streak_count"
+> & {
   name: string;
-  avatarUrl?: string | null;
-  locale?: string;
-  dateOfBirth?: string | null;
-  onboardingDobCompleted?: boolean;
-  streakCount?: number;
+  avatarUrl: string | null;
 };
 
 export type DashboardStat = {
@@ -22,11 +33,16 @@ export type DashboardStat = {
 
 export type LibraryDocument = {
   id: string;
+  studySetId: string;
   name: string;
   slug: string;
   icon: string;
   pageCount: number;
   questionCount: number;
+  flashcardCount: number;
+  summaryCount: number;
+  mcqProgressPercent: number;
+  flashcardsProgressPercent: number;
 };
 
 export type FileActivity = {
@@ -69,7 +85,7 @@ export type ExamQuestion = {
 };
 
 export type Flashcard = {
-  id: string;
+  id: DbFlashcard["id"];
   front: string;
   back: string;
   source: string;
@@ -91,6 +107,8 @@ export type DocumentSummary = {
   overview: string;
   keyPoints: string[];
   sections: SummarySection[];
+  html: string;
+  signedUrl: string | null;
 };
 
 export type McqContentStat = {

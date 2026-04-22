@@ -1,0 +1,1206 @@
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+
+thread '<unnamed>' panicked at C:\Users\runneradmin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\rayon-core-1.12.1\src\registry.rs:168:10:
+The global thread pool has not been initialized.: ThreadPoolBuildError { kind: IOError(Os { code: 1450, kind: Uncategorized, message: "Insufficient system resources exist to complete the requested service." }) }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+#
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+----- Native stack trace -----
+
+ 1: 00007FF6EA1708AD 
+ 2: 00007FF6EB5C9646 
+ 3: 00007FF6EAE63236 
+ 4: 00007FF6EACCA1CE 
+ 5: 00007FF6EACFD7AF 
+ 6: 00007FF6EACFE262 
+ 7: 00007FF6EACFEC42 
+ 8: 00007FF6EA7FC283 
+ 9: 00007FF6EAE8E416 
+10: 00007FF6EA328CFD 
+11: 00007FF6EA085053 
+12: 00007FF6EA0843E9 
+13: 00007FF6EA08DF70 
+14: 00007FF6EAEB85C6 
+15: 00007FF6EC110373 
+16: 00007FF93556E8D7 BaseThreadInitThunk+23
+17: 00007FF935DEC3FC RtlUserThreadStart+44
+Error: Can't resolve 'tw-animate-css' in 'c:\Users\Legit\Documents\PoP-Os Projects'
+    [2m[at finishWithoutResolve (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:27:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:89:43][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at c:\Users\Legit\Documents\PoP-Os Projects\studybites-clone Latest version\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m {
+  details: "resolve 'tw-animate-css' in 'c:\\Users\\Legit\\Documents\\PoP-Os Projects'\n" +
+    '  Parsed request is a module\n' +
+    '  using description file: c:\\Users\\Legit\\package.json (relative path: ./Documents/PoP-Os Projects)\n' +
+    '    resolve as module\n' +
+    "      c:\\Users\\Legit\\Documents\\PoP-Os Projects\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\Users\\Legit\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    '      looking for modules in c:\\Users\\Legit\\node_modules\n' +
+    '        single file module\n' +
+    '          using description file: c:\\Users\\Legit\\package.json (relative path: ./node_modules/tw-animate-css)\n' +
+    '            no extension\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    '            .css\n' +
+    "              c:\\Users\\Legit\\node_modules\\tw-animate-css.css doesn't exist\n" +
+    "        c:\\Users\\Legit\\node_modules\\tw-animate-css doesn't exist\n" +
+    "      c:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "      c:\\node_modules doesn't exist or is not a directory"
+}
+
+
+
+
+#
+
+
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+#
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+----- Native stack trace -----
+----- Native stack trace -----
+
+
+#
+----- Native stack trace -----
+
+ 1: 00007FF6EA1708AD 
+ 1: 00007FF6EA1708AD 
+
+thread '<unnamed>' panicked at C:\Users\runneradmin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\rayon-core-1.12.1\src\registry.rs:168:10:
+ 1: 00007FF6EA1708AD 
+ 2: 00007FF6EB5C9646 
+ 2: 00007FF6EB5C9646 
+The global thread pool has not been initialized.: ThreadPoolBuildError { kind: IOError(Os { code: 1455, kind: Uncategorized, message: "The paging file is too small for this operation to complete." }) }
+ 2: 00007FF6EB5C9646 
+ 3: 00007FF6EAE63236 
+ 3: 00007FF6EAE63236 
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+ 3: 00007FF6EAE63236 
+ 4: 00007FF6EACCA1CE 
+ 4: 00007FF6EACCA1CE 
+ 4: 00007FF6EACCA1CE 
+ 5: 00007FF6EACFD7AF 
+ 5: 00007FF6EACFD7AF 
+ 5: 00007FF6EACFD7AF 
+ 6: 00007FF6EACFE262 
+ 6: 00007FF6EACFE262 
+ 6: 00007FF6EACFE262 
+ 7: 00007FF6EACFEC42 
+ 7: 00007FF6EACFEC42 
+ 7: 00007FF6EACFEC42 
+ 8: 00007FF6EA7FC283 
+ 8: 00007FF6EA7FC283 
+ 8: 00007FF6EA7FC283 
+ 9: 00007FF6EAE8E416 
+ 9: 00007FF6EAE8E416 
+10: 00007FF6EA328CFD 
+ 9: 00007FF6EAE8E416 
+10: 00007FF6EA328CFD 
+10: 00007FF6EA328CFD 
+11: 00007FF6EA085053 
+11: 00007FF6EA085053 
+11: 00007FF6EA085053 
+12: 00007FF6EA0843E9 
+12: 00007FF6EA0843E9 
+12: 00007FF6EA0843E9 
+13: 00007FF6EA08DF70 
+13: 00007FF6EA08DF70 
+13: 00007FF6EA08DF70 
+14: 00007FF6EAEB85C6 
+14: 00007FF6EAEB85C6 
+14: 00007FF6EAEB85C6 
+15: 00007FF6EC110373 
+15: 00007FF6EC110373 
+15: 00007FF6EC110373 
+16: 00007FF93556E8D7 BaseThreadInitThunk+23
+16: 00007FF93556E8D7 BaseThreadInitThunk+23
+16: 00007FF93556E8D7 BaseThreadInitThunk+23
+17: 00007FF935DEC3FC RtlUserThreadStart+44
+17: 00007FF935DEC3FC RtlUserThreadStart+44
+17: 00007FF935DEC3FC RtlUserThreadStart+44
+
+<--- Last few GCs --->
+
+
+
+#
+# Fatal JavaScript out of memory: MemoryChunk allocation failed during deserialization.
+#
+----- Native stack trace -----
+
+ 1: 00007FF6EA1708AD 
+ 2: 00007FF6EB5C9646 
+ 3: 00007FF6EAE63236 
+ 4: 00007FF6EAC63937 
+ 5: 00007FF6EAC15B8A 
+ 6: 00007FF6EAC15C4C 
+ 7: 00007FF6EAC1653B 
+ 8: 00007FF6EABED791 
+ 9: 00007FF6EAC53643 
+10: 00007FF6EAC533AE 
+11: 00007FF6EAC52198 
+12: 00007FF6EAC5211A 
+13: 00007FF6EA8198E3 
+14: 00007FF6EA81772C 
+15: 00007FF6EA81E9AE 
+16: 00007FF6EA81815D 
+17: 00007FF6EA7F5B94 
+18: 00007FF6EA813141 
+19: 00007FF6EA7F664F 
+20: 00007FF6EACFE84C 
+21: 00007FF6EACFEC42 
+22: 00007FF6EA7FC283 
+23: 00007FF6EAE8E416 
+24: 00007FF6EA328CFD 
+25: 00007FF6EA085053 
+26: 00007FF6EA0843E9 
+27: 00007FF6EA08DF70 
+28: 00007FF6EAEB85C6 
+29: 00007FF6EC110373 
+30: 00007FF93556E8D7 BaseThreadInitThunk+23
+31: 00007FF935DEC3FC RtlUserThreadStart+44
+
+
+#
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+----- Native stack trace -----
+
+ 1: 00007FF6EA1708AD 
+ 2: 00007FF6EB5C9646 
+ 3: 00007FF6EAE63236 
+ 4: 00007FF6EACCA1CE 
+ 5: 00007FF6EACFD7AF 
+ 6: 00007FF6EACFE262 
+ 7: 00007FF6EACFEC42 
+ 8: 00007FF6EA7FC283 
+ 9: 00007FF6EAE8E416 
+10: 00007FF6EA328CFD 
+11: 00007FF6EA085053 
+12: 00007FF6EA0843E9 
+13: 00007FF6EA08DF70 
+14: 00007FF6EAEB85C6 
+15: 00007FF6EC110373 
+16: 00007FF93556E8D7 BaseThreadInitThunk+23
+17: 00007FF935DEC3FC RtlUserThreadStart+44
+
+<--- Last few GCs --->
+
+FATAL ERROR: Committing semi space failed. Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 00007FF6EA21B6AF node::OnFatalError+1343
+ 2: 00007FF6EAE63257 v8::Function::NewInstance+423
+ 3: 00007FF6EAC63937 v8::base::AddressSpaceReservation::AddressSpaceReservation+322071
+ 4: 00007FF6EABFC35B v8::Platform::SystemClockTimeMillis+491051
+ 5: 00007FF6EABD3DAE v8::Platform::SystemClockTimeMillis+325758
+ 6: 00007FF6EAC663D2 v8::base::AddressSpaceReservation::AddressSpaceReservation+332978
+ 7: 00007FF6EAC65387 v8::base::AddressSpaceReservation::AddressSpaceReservation+328807
+ 8: 00007FF6EAC762F2 v8::internal::StrongRootAllocatorBase::deallocate_impl+15858
+ 9: 00007FF6EAC75E1B v8::internal::StrongRootAllocatorBase::deallocate_impl+14619
+10: 00007FF6EC0F4BAD v8::base::UnsignedDivisionByConstant<unsigned __int64>+2791405
+11: 00007FF6EAC61400 v8::base::AddressSpaceReservation::AddressSpaceReservation+312544
+12: 00007FF6EAC7BC8A X509_STORE_set_cleanup+5098
+13: 00007FF6EAC88126 uv_timer_set_repeat+20694
+14: 00007FF6EA85B207 v8::String::Utf8Value::~Utf8Value+143495
+15: 000002019FE7733A 
+
+
+#
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+----- Native stack trace -----
+
+ 1: 00007FF6EA1708AD node::MultiIsolatePlatform::DisposeIsolate+5341
+ 2: 00007FF6EB5C9646 v8::base::FatalOOM+54
+ 3: 00007FF6EAE63236 v8::Function::NewInstance+390
+ 4: 00007FF6EACCA1CE v8::CppHeap::CollectGarbageInYoungGenerationForTesting+111438
+ 5: 00007FF6EACFD7AF SSL_CTX_set_default_read_buffer_len+41247
+ 6: 00007FF6EACFE262 SSL_CTX_set_default_read_buffer_len+43986
+ 7: 00007FF6EACFEC42 SSL_CTX_set_default_read_buffer_len+46514
+ 8: 00007FF6EA7FC283 v8::internal::Version::GetSONAME+122307
+ 9: 00007FF6EAE8E416 v8::Isolate::Initialize+662
+10: 00007FF6EA328CFD node::SetIsolateUpForNode+749
+11: 00007FF6EA085053 RSA_meth_get_flags+222691
+12: 00007FF6EA0843E9 RSA_meth_get_flags+219513
+13: 00007FF6EA08DF70 RSA_meth_get_flags+259328
+14: 00007FF6EAEB85C6 uv_thread_detach+150
+15: 00007FF6EC110373 v8::base::UnsignedDivisionByConstant<unsigned __int64>+2903987
+16: 00007FF93556E8D7 BaseThreadInitThunk+23
+17: 00007FF935DEC3FC RtlUserThreadStart+44
+
+
+#
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+----- Native stack trace -----
+
+ 1: 00007FF6EA1708AD 
+ 2: 00007FF6EB5C9646 
+ 3: 00007FF6EAE63236 
+ 4: 00007FF6EACCA1CE 
+ 5: 00007FF6EACFD7AF 
+ 6: 00007FF6EACFE262 
+ 7: 00007FF6EACFEC42 
+ 8: 00007FF6EA7FC283 
+ 9: 00007FF6EAE8E416 
+10: 00007FF6EA328CFD 
+11: 00007FF6EA085053 
+12: 00007FF6EA0843E9 
+13: 00007FF6EA08DF70 
+14: 00007FF6EAEB85C6 
+15: 00007FF6EC110373 
+16: 00007FF93556E8D7 BaseThreadInitThunk+23
+17: 00007FF935DEC3FC RtlUserThreadStart+44
+
+
+
+#
+
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+#
+# Fatal process out of memory: Re-embedded builtins: set permissions
+----- Native stack trace -----
+#
+
+----- Native stack trace -----
+
+ 1: 00007FF6EA1708AD node::MultiIsolatePlatform::DisposeIsolate+5341
+ 1: 00007FF6EA1708AD node::MultiIsolatePlatform::DisposeIsolate+5341
+ 2: 00007FF6EB5C9646 v8::base::FatalOOM+54
+ 3: 00007FF6EAE63236 v8::Function::NewInstance+390
+ 2: 00007FF6EB5C9646 v8::base::FatalOOM+54
+ 4: 00007FF6EACCA1CE v8::CppHeap::CollectGarbageInYoungGenerationForTesting+111438
+ 3: 00007FF6EAE63236 v8::Function::NewInstance+390
+ 5: 00007FF6EACFD7AF SSL_CTX_set_default_read_buffer_len+41247
+ 4: 00007FF6EACCA1CE v8::CppHeap::CollectGarbageInYoungGenerationForTesting+111438
+ 6: 00007FF6EACFE262 SSL_CTX_set_default_read_buffer_len+43986
+ 5: 00007FF6EACFD7AF SSL_CTX_set_default_read_buffer_len+41247
+ 7: 00007FF6EACFEC42 SSL_CTX_set_default_read_buffer_len+46514
+ 6: 00007FF6EACFE262 SSL_CTX_set_default_read_buffer_len+43986
+ 8: 00007FF6EA7FC283 v8::internal::Version::GetSONAME+122307
+ 7: 00007FF6EACFEC42 SSL_CTX_set_default_read_buffer_len+46514
+ 9: 00007FF6EAE8E416 v8::Isolate::Initialize+662
+ 8: 00007FF6EA7FC283 v8::internal::Version::GetSONAME+122307
+10: 00007FF6EA328CFD node::SetIsolateUpForNode+749
+ 9: 00007FF6EAE8E416 v8::Isolate::Initialize+662
+11: 00007FF6EA085053 RSA_meth_get_flags+222691
+10: 00007FF6EA328CFD node::SetIsolateUpForNode+749
+12: 00007FF6EA0843E9 RSA_meth_get_flags+219513
+11: 00007FF6EA085053 RSA_meth_get_flags+222691
+13: 00007FF6EA08DF70 RSA_meth_get_flags+259328
+12: 00007FF6EA0843E9 RSA_meth_get_flags+219513
+14: 00007FF6EAEB85C6 uv_thread_detach+150
+13: 00007FF6EA08DF70 RSA_meth_get_flags+259328
+15: 00007FF6EC110373 v8::base::UnsignedDivisionByConstant<unsigned __int64>+2903987
+14: 00007FF6EAEB85C6 uv_thread_detach+150
+16: 00007FF93556E8D7 BaseThreadInitThunk+23
+15: 00007FF6EC110373 v8::base::UnsignedDivisionByConstant<unsigned __int64>+2903987
+17: 00007FF935DEC3FC RtlUserThreadStart+44
+16: 00007FF93556E8D7 BaseThreadInitThunk+23
+17: 00007FF935DEC3FC RtlUserThreadStart+44
+
+
+#
+# Fatal process out of memory: Re-embedded builtins: set permissions
+#
+----- Native stack trace -----
+
+ 1: 00007FF6EA1708AD node::MultiIsolatePlatform::DisposeIsolate+5341
+ 2: 00007FF6EB5C9646 v8::base::FatalOOM+54
+ 3: 00007FF6EAE63236 v8::Function::NewInstance+390
+ 4: 00007FF6EACCA1CE v8::CppHeap::CollectGarbageInYoungGenerationForTesting+111438
+ 5: 00007FF6EACFD7AF SSL_CTX_set_default_read_buffer_len+41247
+ 6: 00007FF6EACFE262 SSL_CTX_set_default_read_buffer_len+43986
+ 7: 00007FF6EACFEC42 SSL_CTX_set_default_read_buffer_len+46514
+ 8: 00007FF6EA7FC283 v8::internal::Version::GetSONAME+122307
+ 9: 00007FF6EAE8E416 v8::Isolate::Initialize+662
+10: 00007FF6EA328CFD node::SetIsolateUpForNode+749
+11: 00007FF6EA085053 RSA_meth_get_flags+222691
+12: 00007FF6EA0843E9 RSA_meth_get_flags+219513
+13: 00007FF6EA08DF70 RSA_meth_get_flags+259328
+14: 00007FF6EAEB85C6 uv_thread_detach+150
+15: 00007FF6EC110373 v8::base::UnsignedDivisionByConstant<unsigned __int64>+2903987
+16: 00007FF93556E8D7 BaseThreadInitThunk+23
+17: 00007FF935DEC3FC RtlUserThreadStart+44

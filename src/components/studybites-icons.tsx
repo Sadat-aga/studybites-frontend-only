@@ -31,7 +31,8 @@ export function EyeOpenIcon() {
       alt="Show password"
       width={17}
       height={12}
-      className="h-6 w-auto"
+      className="h-6"
+      style={{ width: "auto" }}
     />
   );
 }

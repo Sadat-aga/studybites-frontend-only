@@ -29,7 +29,8 @@ export function StudybitesAuthShell({
               alt="bito logo"
               width={1936}
               height={483}
-              className="h-14 w-36 duration-200 md:h-[70px]"
+              className="w-36 duration-200 md:w-[193px]"
+              style={{ height: "auto" }}
               priority
             />
           </Link>

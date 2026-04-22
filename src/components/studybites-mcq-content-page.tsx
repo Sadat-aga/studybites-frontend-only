@@ -6,10 +6,32 @@ import { useParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useTheme, type ThemePreference } from "@/components/theme-provider";
 import { useAuth } from "@/lib/auth";
-import { uploadDocumentAndProcess } from "@/lib/documents";
 import { saveMcqContentItem, useMcqContentData } from "@/lib/study-data";
 import type { McqContentItem, McqStatus } from "@/types/auth";
 import { cn } from "@/lib/utils";
+
+type MockUploadDocumentOptions = {
+  userId?: string;
+  file?: File | null;
+  existingFolderId?: string;
+  onStatusChange?: (message: string) => void;
+};
+
+async function uploadDocumentAndProcess({
+  file,
+  existingFolderId,
+  onStatusChange,
+}: MockUploadDocumentOptions) {
+  onStatusChange?.("Uploading to mock workspace...");
+  return {
+    studySetId: existingFolderId ?? "mock-study-set-001",
+    folderId: existingFolderId ?? "mock-folder-001",
+    storagePath: "mock-storage-path",
+    fileName: file?.name ?? "Mock Study.pdf",
+    publicUrl: "",
+    extractedText: "",
+  };
+}
 
 type InfoPanel = "account" | "idea" | "updates" | "help";
 
@@ -35,8 +57,20 @@ export function StudybitesMcqContentPage() {
   const [mobileInfoSlide, setMobileInfoSlide] = useState<0 | 1>(0);
   const [notice, setNotice] = useState("");
   const uploadInputRef = useRef<HTMLInputElement | null>(null);
-  const { document, progress, items, stats, setItems } = useMcqContentData(params?.fileId, user?.id);
+  const {
+    document,
+    progress,
+    items,
+    stats,
+    setItems,
+    status: fileStatus,
+  } = useMcqContentData(params?.fileId, user?.id);
   const [questions, setQuestions] = useState<McqContentItem[]>(items);
+  const filePageHref = params?.fileId ? `/library/files/${params.fileId}` : "/library";
+  const practiceHref =
+    fileStatus === "ready" && params?.fileId
+      ? `/library/study-set/${document.studySetId}/folder/${params.fileId}/exam`
+      : filePageHref;
 
   useEffect(() => {
     setQuestions(items);
@@ -167,7 +201,7 @@ export function StudybitesMcqContentPage() {
               alt="bito logo"
               width={54}
               height={34}
-              className="h-[34px] w-auto -rotate-[8deg]"
+              className="-rotate-[8deg]"
             />
             <button
               type="button"
@@ -285,6 +319,7 @@ export function StudybitesMcqContentPage() {
           <input
             ref={uploadInputRef}
             type="file"
+            accept="application/pdf,.pdf"
             className="hidden"
             onChange={(event) => {
               const file = event.target.files?.[0];
@@ -298,8 +333,9 @@ export function StudybitesMcqContentPage() {
                 userId: user?.id,
                 file,
                 existingFolderId: params?.fileId,
+                onStatusChange: setNotice,
               })
-                .then((result) => setNotice(`${result.fileName} uploaded. Processing started.`))
+                .then((result) => setNotice(`${result.fileName} uploaded to cloud.`))
                 .catch((error: unknown) =>
                   setNotice(error instanceof Error ? error.message : "Upload failed."),
                 );
@@ -334,7 +370,7 @@ export function StudybitesMcqContentPage() {
             <div className="mx-auto max-w-[980px] xl:mx-0 xl:max-w-none">
               <div className="mb-4 flex items-center justify-between">
                 <Link
-                  href="/library/files/6260097"
+                  href={filePageHref}
                   className="flex items-center gap-2 text-[17px] text-[#475467] no-underline dark:text-[#c5d0e2]"
                 >
                   <BackChevron />
@@ -382,13 +418,14 @@ export function StudybitesMcqContentPage() {
                         key={item.id}
                         item={item}
                         onEdit={() => openEditQuestion(item)}
+                        practiceHref={practiceHref}
                       />
                     ))}
                   </div>
 
                   <div className="mt-6 flex items-center gap-3">
                     <Link
-                      href="/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam"
+                      href={practiceHref}
                       className="rounded-[16px] bg-[linear-gradient(90deg,#635ef6_0%,#726cf7_100%)] px-5 py-3.5 text-base font-bold text-white no-underline shadow-[0_16px_34px_rgba(96,97,240,0.22)]"
                     >
                       Start Learning
@@ -665,9 +702,11 @@ function SidebarAction({
 function McqQuestionCard({
   item,
   onEdit,
+  practiceHref,
 }: {
   item: McqContentItem;
   onEdit: () => void;
+  practiceHref: string;
 }) {
   return (
     <article className="rounded-[22px] border border-[#edf1f7] bg-white px-5 py-5 shadow-[0_14px_32px_rgba(103,109,167,0.12)] dark:border-[#26344e] dark:bg-[#182338] dark:shadow-[0_16px_34px_rgba(0,0,0,0.3)]">
@@ -714,7 +753,7 @@ function McqQuestionCard({
 
       <div className="mt-4 flex items-center justify-between gap-3">
         <Link
-          href="/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/6260097/exam"
+          href={practiceHref}
           className="text-sm font-bold text-[#6061f0] no-underline dark:text-[#b9b8ff]"
         >
           Practice this question

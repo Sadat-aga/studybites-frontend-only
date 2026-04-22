@@ -1,7 +1,7 @@
 "use client";
 
-import { getSupabaseBrowserClient } from "@/lib/supabase/browser";
 import type { ExamQuestion } from "@/types/auth";
+import type { Json } from "@/types/database";
 
 export type SessionEntry = {
   questionIndex: number;
@@ -9,38 +9,94 @@ export type SessionEntry = {
   key: string;
 };
 
+export type SessionAttemptSnapshot = {
+  questionId: string;
+  topic: string;
+  result: "correct" | "incorrect";
+  round: number;
+};
+
+export type CachedMcqSessionProgress = {
+  allQuestionsResult: Array<{ id: string; result?: "correct" | "false" }>;
+  answeredQuestions: number;
+  attempts: SessionAttemptSnapshot[];
+  bestStreak: number;
+  currentIndex: number;
+  currentRound: number;
+  currentStreak: number;
+  flaggedCount: number;
+  flaggedQuestionIds: string[];
+  folderId: string;
+  isFetchedRound: boolean;
+  isFinishedRound: boolean;
+  lastRoundResults: Array<{ id: string; result?: "correct" | "false" }>;
+  questionId: string | null;
+  queue: SessionEntry[];
+  roundSummaryRound: number | null;
+  score: number;
+  sessionId: string | null;
+  status: "active" | "completed";
+  studySetId: string | null;
+  total: number;
+  totalRoundXpPoint: number;
+  updatedAt: string;
+  xpEarned: number;
+};
+
+type PendingPracticeLaunches = Record<string, string>;
+
 type StartMcqSessionOptions = {
   userId: string;
   fileId?: string;
   questions: ExamQuestion[];
   forceNew?: boolean;
+  restoreSessionId?: string | null;
 };
 
-type SyncMcqSessionOptions = {
-  sessionId: string;
-  queue: SessionEntry[];
+type StartedMcqSession = {
+  id: string;
+  studySetId: string | null;
+};
+
+type CacheMcqSessionSnapshotOptions = {
+  attempts: SessionAttemptSnapshot[];
+  answeredQuestions: number;
+  bestStreak: number;
   currentIndex: number;
   currentRound: number;
-  answeredQuestions: number;
-  totalQuestions: number;
-  score: number;
-  xpEarned: number;
-  bestStreak: number;
   currentStreak: number;
+  fileId: string;
   flaggedCount: number;
+  flaggedQuestionIds: string[];
+  questionId: string | null;
+  questions: ExamQuestion[];
+  queue: SessionEntry[];
+  roundSummaryRound: number | null;
+  score: number;
+  sessionId: string | null;
   status: "active" | "completed";
+  studySetId: string | null;
+  totalQuestions: number;
+  xpEarned: number;
+};
+
+type SyncMcqSessionOptions = CacheMcqSessionSnapshotOptions & {
+  sessionId: string;
 };
 
 type RecordMcqAttemptOptions = {
   sessionId: string;
   userId: string;
   questionId: string;
-  selectedChoiceId: string;
+  selectedChoiceId: string | null;
   isCorrect: boolean;
   roundNumber: number;
   queuePosition: number;
   xpAwarded: number;
 };
+
+const sessionStore = new Map<string, CachedMcqSessionProgress>();
+const PENDING_PRACTICE_LAUNCHES_STORAGE_KEY = new Set<string>();
 
 export function createSessionQueue(questions: ExamQuestion[]): SessionEntry[] {
   return questions.map((_, index) => ({
@@ -50,171 +106,110 @@ export function createSessionQueue(questions: ExamQuestion[]): SessionEntry[] {
   }));
 }
 
-async function resolveFolder(fileId: string) {
-  const supabase = getSupabaseBrowserClient();
-  const { data, error } = await supabase
-    .from("folders")
-    .select("id, study_set_id")
-    .eq("id", fileId)
-    .single();
+function buildQuestionResults(questions: ExamQuestion[], attempts: SessionAttemptSnapshot[]) {
+  const latestResultByQuestionId = new Map<string, "correct" | "false">();
 
-  if (error || !data) {
-    throw new Error(error?.message ?? "Could not resolve the MCQ folder.");
+  for (const attempt of attempts) {
+    latestResultByQuestionId.set(attempt.questionId, attempt.result === "correct" ? "correct" : "false");
   }
 
-  return data;
-}
-
-export async function startMcqSession({
-  userId,
-  fileId,
-  questions,
-  forceNew = false,
-}: StartMcqSessionOptions) {
-  if (!fileId) {
-    throw new Error("A file id is required to start an MCQ session.");
-  }
-
-  const supabase = getSupabaseBrowserClient();
-  const folder = await resolveFolder(fileId);
-  const initialQueue = createSessionQueue(questions);
-
-  if (!forceNew) {
-    const { data: existingSession } = await supabase
-      .from("mcq_sessions")
-      .select("id")
-      .eq("user_id", userId)
-      .eq("folder_id", folder.id)
-      .eq("status", "active")
-      .order("created_at", { ascending: false })
-      .limit(1)
-      .maybeSingle();
-
-    if (existingSession) {
-      return existingSession;
-    }
-  }
-
-  const { data, error } = await supabase
-    .from("mcq_sessions")
-    .insert({
-      user_id: userId,
-      study_set_id: folder.study_set_id,
-      folder_id: folder.id,
-      total_questions: questions.length,
-      answered_questions: 0,
-      current_round: 1,
-      current_index: 0,
-      score: 0,
-      xp_earned: 0,
-      best_streak: 0,
-      current_streak: 0,
-      flagged_count: 0,
-      status: "active",
-      queue: initialQueue,
-      round_summary: [],
-    })
-    .select("id")
-    .single();
-
-  if (error || !data) {
-    throw new Error(error?.message ?? "Could not start the MCQ session.");
-  }
-
-  return data;
-}
-
-export async function syncMcqSessionSnapshot({
-  sessionId,
-  queue,
-  currentIndex,
-  currentRound,
-  answeredQuestions,
-  totalQuestions,
-  score,
-  xpEarned,
-  bestStreak,
-  currentStreak,
-  flaggedCount,
-  status,
-}: SyncMcqSessionOptions) {
-  const supabase = getSupabaseBrowserClient();
-  const payload: Record<string, unknown> = {
-    queue,
-    current_index: currentIndex,
-    current_round: currentRound,
-    answered_questions: answeredQuestions,
-    total_questions: totalQuestions,
-    score,
-    xp_earned: xpEarned,
-    best_streak: bestStreak,
-    current_streak: currentStreak,
-    flagged_count: flaggedCount,
-    status,
-  };
-
-  if (status === "completed") {
-    payload.completed_at = new Date().toISOString();
-  }
-
-  const { error } = await supabase.from("mcq_sessions").update(payload).eq("id", sessionId);
-  if (error) {
-    throw new Error(error.message);
-  }
-}
-
-export async function recordMcqAttempt({
-  sessionId,
-  userId,
-  questionId,
-  selectedChoiceId,
-  isCorrect,
-  roundNumber,
-  queuePosition,
-  xpAwarded,
-}: RecordMcqAttemptOptions) {
-  const supabase = getSupabaseBrowserClient();
-  const { error } = await supabase.from("mcq_attempts").insert({
-    session_id: sessionId,
-    question_id: questionId,
-    user_id: userId,
-    round_number: roundNumber,
-    queue_position: queuePosition,
-    selected_choice_id: selectedChoiceId,
-    is_correct: isCorrect,
-    xp_awarded: xpAwarded,
+  return questions.map((question) => {
+    const result = latestResultByQuestionId.get(question.id);
+    return result ? { id: question.id, result } : { id: question.id };
   });
-
-  if (error) {
-    throw new Error(error.message);
-  }
 }
 
-export async function flagMcqQuestion(sessionId: string, questionId: string) {
-  const supabase = getSupabaseBrowserClient();
-  const { data: latestAttempt, error: lookupError } = await supabase
-    .from("mcq_attempts")
-    .select("id")
-    .eq("session_id", sessionId)
-    .eq("question_id", questionId)
-    .order("attempted_at", { ascending: false })
-    .limit(1)
-    .maybeSingle();
+function buildRoundResults(questions: ExamQuestion[], attempts: SessionAttemptSnapshot[], roundNumber: number) {
+  const roundStartIndex = Math.max(0, (roundNumber - 1) * 10);
+  return buildQuestionResults(questions.slice(roundStartIndex, roundStartIndex + 10), attempts);
+}
 
-  if (lookupError) {
-    throw new Error(lookupError.message);
+function buildCachedProgress(options: CacheMcqSessionSnapshotOptions): CachedMcqSessionProgress {
+  return {
+    allQuestionsResult: buildQuestionResults(options.questions, options.attempts),
+    answeredQuestions: options.answeredQuestions,
+    attempts: options.attempts,
+    bestStreak: options.bestStreak,
+    currentIndex: options.currentIndex,
+    currentRound: options.currentRound,
+    currentStreak: options.currentStreak,
+    flaggedCount: options.flaggedCount,
+    flaggedQuestionIds: options.flaggedQuestionIds,
+    folderId: options.fileId,
+    isFetchedRound: true,
+    isFinishedRound: options.roundSummaryRound != null,
+    lastRoundResults: buildRoundResults(options.questions, options.attempts, options.currentRound),
+    questionId: options.questionId,
+    queue: options.queue,
+    roundSummaryRound: options.roundSummaryRound,
+    score: options.score,
+    sessionId: options.sessionId,
+    status: options.status,
+    studySetId: options.studySetId,
+    total: options.totalQuestions,
+    totalRoundXpPoint: options.attempts.filter((attempt) => attempt.round === options.currentRound && attempt.result === "correct").length * 10,
+    updatedAt: new Date().toISOString(),
+    xpEarned: options.xpEarned,
+  };
+}
+
+export function readCachedMcqSession(fileId?: string, _questions: ExamQuestion[] = []) {
+  if (!fileId) {
+    return null;
   }
 
-  if (!latestAttempt) {
+  return sessionStore.get(fileId) ?? null;
+}
+
+export function cacheMcqSessionSnapshot(options: CacheMcqSessionSnapshotOptions) {
+  sessionStore.set(options.fileId, buildCachedProgress(options));
+}
+
+export function clearCachedMcqSession(fileId?: string) {
+  if (!fileId) {
     return;
   }
 
-  const { error } = await supabase
-    .from("mcq_attempts")
-    .update({ flagged_bad: true })
-    .eq("id", latestAttempt.id);
+  sessionStore.delete(fileId);
+}
 
-  if (error) {
-    throw new Error(error.message);
+export function beginMcqPracticeLaunch(fileId?: string) {
+  if (!fileId) {
+    return;
   }
+
+  clearCachedMcqSession(fileId);
+  PENDING_PRACTICE_LAUNCHES_STORAGE_KEY.add(fileId);
+}
+
+export function consumeMcqPracticeLaunch(fileId?: string) {
+  if (!fileId) {
+    return false;
+  }
+
+  if (!PENDING_PRACTICE_LAUNCHES_STORAGE_KEY.has(fileId)) {
+    return false;
+  }
+
+  PENDING_PRACTICE_LAUNCHES_STORAGE_KEY.delete(fileId);
+  return true;
+}
+
+export async function startMcqSession({ fileId, questions }: StartMcqSessionOptions): Promise<StartedMcqSession> {
+  return {
+    id: `mock-session-${fileId ?? crypto.randomUUID()}`,
+    studySetId: fileId ? `mock-study-set-${fileId}` : null,
+  };
+}
+
+export async function syncMcqSessionSnapshot(options: SyncMcqSessionOptions) {
+  sessionStore.set(options.sessionId, buildCachedProgress(options));
+}
+
+export async function recordMcqAttempt(_options: RecordMcqAttemptOptions) {
+  return;
+}
+
+export async function flagMcqQuestion(_sessionId: string, _questionId: string) {
+  return;
 }

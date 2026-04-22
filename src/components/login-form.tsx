@@ -14,12 +14,13 @@ const initialValues: LoginFormValues = {
 
 export function LoginForm() {
   const router = useRouter();
-  const { login } = useAuth();
+  const { login, signUp } = useAuth();
   const [values, setValues] = useState<LoginFormValues>(initialValues);
   const [errors, setErrors] = useState<Partial<Record<keyof LoginFormValues, string>>>({});
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [mode, setMode] = useState<"login" | "signup">("login");
 
   const hasErrors = useMemo(() => Object.keys(errors).length > 0, [errors]);
 
@@ -35,11 +36,17 @@ export function LoginForm() {
     }
 
     setIsSubmitting(true);
-    const result = await login(values);
+    const result = mode === "login" ? await login(values) : await signUp(values);
     setIsSubmitting(false);
 
     if (!result.ok) {
       setSubmitError(result.message);
+      return;
+    }
+
+    if (result.requiresEmailConfirmation) {
+      setSubmitError(result.message ?? "Account created. Confirm your email before signing in.");
+      setMode("login");
       return;
     }
 
@@ -56,7 +63,9 @@ export function LoginForm() {
 
   return (
     <div className="mx-auto flex w-full max-w-lg flex-col items-center rounded-2xl bg-bg-default py-4 shadow-[var(--studybites-shadow)] transition duration-1000 ease-in">
-      <h2 className="mb-6 px-2 text-lg font-bold text-text-default sm:text-xl">Sign in</h2>
+      <h2 className="mb-6 px-2 text-lg font-bold text-text-default sm:text-xl">
+        {mode === "login" ? "Sign in" : "Create your account"}
+      </h2>
 
       <div className="my-2 flex w-full items-center justify-center gap-3">
         <button
@@ -145,7 +154,13 @@ export function LoginForm() {
               type="submit"
               disabled={disabled}
             >
-              {isSubmitting ? "Signing in..." : "Sign in"}
+              {isSubmitting
+                ? mode === "login"
+                  ? "Signing in..."
+                  : "Creating account..."
+                : mode === "login"
+                  ? "Sign in"
+                  : "Create account"}
             </button>
           </div>
         </div>
@@ -156,10 +171,20 @@ export function LoginForm() {
       ) : null}
 
       <div className="flex items-center gap-1 px-6 pt-2 text-sm text-text-secondary">
-        <span>Don&apos;t have an account?</span>
-        <Link href="#" className="font-bold text-primary">
-          Create an account
-        </Link>
+        <span>
+          {mode === "login" ? "Don&apos;t have an account?" : "Already have an account?"}
+        </span>
+        <button
+          type="button"
+          className="font-bold text-primary"
+          onClick={() => {
+            setMode((current) => (current === "login" ? "signup" : "login"));
+            setSubmitError("");
+            setErrors({});
+          }}
+        >
+          {mode === "login" ? "Create an account" : "Sign in instead"}
+        </button>
       </div>
 
       {hasErrors ? (

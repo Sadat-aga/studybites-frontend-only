@@ -2,19 +2,22 @@
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
+import { useAuth } from "@/lib/auth";
 import { useSummaryResult } from "@/lib/study-data";
 
 export function StudybitesSummaryPage() {
   const router = useRouter();
   const params = useParams<{ fileId: string }>();
-  const { summary, phase, setPhase } = useSummaryResult(params?.fileId);
+  const { user } = useAuth();
+  const { summary, phase, setPhase } = useSummaryResult(params?.fileId, user?.id);
+  const filePageHref = params?.fileId ? `/library/files/${params.fileId}` : "/library";
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,#f8fbff_0%,#f4f6fb_34%,#f6f8fc_100%)] font-cairo text-[#0f172a] dark:bg-[radial-gradient(circle_at_top,#111a32_0%,#0d1528_38%,#09111f_100%)] dark:text-[#edf2ff]">
       <div className="mx-auto max-w-[1120px] px-4 pt-4 pb-10 md:px-6 md:pt-6">
         <div className="flex items-center justify-between gap-4">
           <Link
-            href={`/library/files/${params?.fileId ?? "6260097"}`}
+            href={filePageHref}
             className="inline-flex items-center gap-2 text-[17px] text-[#475467] no-underline dark:text-[#c5d0e2]"
           >
             <BackChevron />
@@ -23,7 +26,7 @@ export function StudybitesSummaryPage() {
 
           <button
             type="button"
-            onClick={() => router.push(`/library/files/${params?.fileId ?? "6260097"}`)}
+            onClick={() => router.push(filePageHref)}
             className="flex size-10 items-center justify-center rounded-[10px] border border-[#e6ebf4] bg-white/90 shadow-[0_4px_14px_rgba(117,130,164,0.12)] dark:border-[#2d3a54] dark:bg-[#182338]/92"
             aria-label="Close summary"
           >
@@ -75,34 +78,30 @@ export function StudybitesSummaryPage() {
               </p>
             </div>
 
-            {summary.sections.map((section) => (
-              <article
-                key={section.title}
-                className="rounded-[28px] border border-[#edf1f7] bg-white p-6 shadow-[0_18px_48px_rgba(103,109,167,0.12)] dark:border-[#26344e] dark:bg-[#182338]"
-              >
-                <h2 className="text-[24px] font-bold text-[#334155] dark:text-white">
-                  {section.title}
-                </h2>
-                <p className="mt-4 text-[16px] leading-8 text-[#475467] dark:text-[#d7def0]">
-                  {section.body}
-                </p>
-              </article>
-            ))}
+            <article className="rounded-[28px] border border-[#edf1f7] bg-white p-6 shadow-[0_18px_48px_rgba(103,109,167,0.12)] dark:border-[#26344e] dark:bg-[#182338]">
+              <div
+                className="studybites-summary-html prose prose-slate max-w-none text-[#475467] dark:prose-invert dark:text-[#d7def0] [&_h2]:mt-8 [&_h2]:text-[24px] [&_h2]:font-bold [&_h2]:text-[#334155] dark:[&_h2]:text-white [&_li]:leading-7 [&_p]:text-[16px] [&_p]:leading-8 [&_table]:mt-6 [&_table]:w-full [&_table]:border-collapse [&_td]:border [&_td]:border-[#dbe4f0] [&_td]:p-3 dark:[&_td]:border-[#314059] [&_th]:border [&_th]:border-[#dbe4f0] [&_th]:bg-[#f8faff] [&_th]:p-3 [&_th]:text-left dark:[&_th]:border-[#314059] dark:[&_th]:bg-[#111a2f] [&_ul]:pl-5"
+                dangerouslySetInnerHTML={{ __html: summary.html }}
+              />
+            </article>
           </section>
 
           <aside className="order-1 space-y-6 lg:order-2">
             <div className="rounded-[28px] border border-[#edf1f7] bg-white p-6 shadow-[0_18px_48px_rgba(103,109,167,0.12)] dark:border-[#26344e] dark:bg-[#182338]">
-              <h2 className="text-[22px] font-bold text-[#334155] dark:text-white">Key Points</h2>
-              <ul className="mt-4 space-y-3">
-                {summary.keyPoints.map((point) => (
-                  <li
-                    key={point}
-                    className="rounded-[18px] bg-[#f8faff] px-4 py-4 text-[15px] leading-7 text-[#475467] dark:bg-[#111a2f] dark:text-[#d7def0]"
-                  >
-                    {point}
-                  </li>
-                ))}
-              </ul>
+              <h2 className="text-[22px] font-bold text-[#334155] dark:text-white">Summary source</h2>
+              <p className="mt-4 text-[15px] leading-7 text-[#475467] dark:text-[#d7def0]">
+                This view renders the stored HTML summary from Supabase Storage using a signed URL.
+              </p>
+              {summary.signedUrl ? (
+                <a
+                  href={summary.signedUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-4 inline-flex rounded-full bg-[#f5f4ff] px-4 py-2 text-[13px] font-bold text-[#5f62f2] dark:bg-[#1c235d] dark:text-[#c8c7ff]"
+                >
+                  Open raw summary
+                </a>
+              ) : null}
             </div>
 
             <div className="rounded-[28px] border border-[#edf1f7] bg-white p-6 shadow-[0_18px_48px_rgba(103,109,167,0.12)] dark:border-[#26344e] dark:bg-[#182338]">
@@ -110,15 +109,8 @@ export function StudybitesSummaryPage() {
                 Summary actions
               </div>
               <div className="mt-4 space-y-3">
-                <ActionButton label="Back to File" onClick={() => router.push(`/library/files/${params?.fileId ?? "6260097"}`)} />
-                <ActionButton
-                  label="Open MCQs"
-                  onClick={() =>
-                    router.push(
-                      `/library/study-set/cd78ee55-9807-46e5-8352-d863a94d92c9/folder/${params?.fileId ?? "6260097"}/exam`,
-                    )
-                  }
-                />
+                <ActionButton label="Back to File" onClick={() => router.push(filePageHref)} />
+                <ActionButton label="Back to Library" onClick={() => router.push("/library")} />
               </div>
             </div>
           </aside>

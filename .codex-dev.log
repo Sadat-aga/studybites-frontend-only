@@ -1,0 +1,17 @@
+
+> studybites-clone@0.3.1 dev
+> next dev
+
+▲ Next.js 16.2.1 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.4:3000
+- Environments: .env.local
+✓ Ready in 287ms
+Creating turbopack project {
+  dir: 'c:\\Users\\Legit\\Documents\\PoP-Os Projects\\studybites-clone Latest version',
+  testMode: true
+}
+
+○ Compiling /library/study-set/[studySetId]/folder/[fileId]/exam ...
+✓ Finished filesystem cache database compaction in 28.1s
+✓ Finished writing to filesystem cache in 26.5s

@@ -4,12 +4,17 @@ import { useEffect, useEffectEvent, useState, type ReactNode } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth";
 import {
+  cacheMcqSessionSnapshot,
+  clearCachedMcqSession,
+  consumeMcqPracticeLaunch,
   createSessionQueue,
   flagMcqQuestion,
+  readCachedMcqSession,
   recordMcqAttempt,
   startMcqSession,
   syncMcqSessionSnapshot,
   type SessionEntry,
+  type SessionAttemptSnapshot,
 } from "@/lib/mcq-session";
 import { useExamQuestions } from "@/lib/study-data";
 import type { ExamQuestion } from "@/types/auth";
@@ -32,11 +37,13 @@ const badFlashcardReasons = [
 ] as const;
 
 type AnswerState = "idle" | "correct" | "incorrect";
-type AttemptRecord = {
-  questionId: string;
-  topic: string;
-  result: Exclude<AnswerState, "idle">;
-  round: number;
+type AttemptRecord = SessionAttemptSnapshot;
+type SessionResumeSnapshot = {
+  currentIndex: number;
+  currentRound: number;
+  questionId: string | null;
+  roundSummaryRound: number | null;
+  status: "active" | "completed";
 };
 
 const ROUND_SIZE = 10;
@@ -49,11 +56,108 @@ function createInitialQueue(questions: ExamQuestion[]): SessionEntry[] {
   }));
 }
 
+function getQuestionIdAtPosition(
+  queue: SessionEntry[],
+  questions: ExamQuestion[],
+  position: number,
+) {
+  const entry = queue[position];
+  return entry ? questions[entry.questionIndex]?.id ?? null : null;
+}
+
+function buildSessionResumeSnapshot({
+  activeEntry,
+  answerState,
+  answeredCount,
+  currentPosition,
+  currentRoundNumber,
+  question,
+  questions,
+  queue,
+  queueCompleted,
+  roundSummaryRound,
+}: {
+  activeEntry: SessionEntry | null;
+  answerState: AnswerState;
+  answeredCount: number;
+  currentPosition: number;
+  currentRoundNumber: number;
+  question: ExamQuestion | null;
+  questions: ExamQuestion[];
+  queue: SessionEntry[];
+  queueCompleted: boolean;
+  roundSummaryRound: number | null;
+}): SessionResumeSnapshot {
+  if (roundSummaryRound != null) {
+    return {
+      currentIndex: currentPosition,
+      currentRound: roundSummaryRound,
+      questionId: question?.id ?? null,
+      roundSummaryRound,
+      status: "active",
+    };
+  }
+
+  if (answerState !== "idle") {
+    const answeredRound = activeEntry?.round ?? currentRoundNumber;
+    if (answeredCount > 0 && answeredCount % ROUND_SIZE === 0) {
+      return {
+        currentIndex: currentPosition,
+        currentRound: answeredRound,
+        questionId: question?.id ?? null,
+        roundSummaryRound: Math.ceil(answeredCount / ROUND_SIZE),
+        status: "active",
+      };
+    }
+
+    const nextIndex = currentPosition + 1;
+    if (nextIndex < queue.length) {
+      return {
+        currentIndex: nextIndex,
+        currentRound: queue[nextIndex]?.round ?? answeredRound,
+        questionId: getQuestionIdAtPosition(queue, questions, nextIndex),
+        roundSummaryRound: null,
+        status: "active",
+      };
+    }
+
+    return {
+      currentIndex: queue.length,
+      currentRound: answeredRound,
+      questionId: null,
+      roundSummaryRound: null,
+      status: "completed",
+    };
+  }
+
+  if (queueCompleted) {
+    return {
+      currentIndex: queue.length,
+      currentRound: activeEntry?.round ?? currentRoundNumber,
+      questionId: null,
+      roundSummaryRound: null,
+      status: "completed",
+    };
+  }
+
+  return {
+    currentIndex: currentPosition,
+    currentRound: activeEntry?.round ?? currentRoundNumber,
+    questionId: question?.id ?? getQuestionIdAtPosition(queue, questions, currentPosition),
+    roundSummaryRound: null,
+    status: "active",
+  };
+}
+
 export function StudybitesExamPage() {
   const router = useRouter();
   const params = useParams<{ fileId: string }>();
   const { user } = useAuth();
-  const questions = useExamQuestions(params?.fileId);
+  const {
+    questions,
+    status: questionsStatus,
+    errorMessage: questionsErrorMessage,
+  } = useExamQuestions(params?.fileId, user?.id);
   const [queue, setQueue] = useState<SessionEntry[]>([]);
   const [currentPosition, setCurrentPosition] = useState(0);
   const [selectedChoiceId, setSelectedChoiceId] = useState<string | null>(null);
@@ -77,12 +181,16 @@ export function StudybitesExamPage() {
   const [xpEarned, setXpEarned] = useState(0);
   const [bestStreak, setBestStreak] = useState(0);
   const [currentStreak, setCurrentStreak] = useState(0);
+  const [sessionStudySetId, setSessionStudySetId] = useState<string | null>(null);
+  const [sessionHydrated, setSessionHydrated] = useState(false);
+  const filePageHref = params?.fileId ? `/library/files/${params.fileId}` : "/library";
 
   const activeEntry = queue[currentPosition] ?? null;
   const question = activeEntry ? questions[activeEntry.questionIndex] : null;
   const selectedChoice = question?.choices.find((choice) => choice.id === selectedChoiceId) ?? null;
   const answeredCount = attempts.length;
-  const queueCompleted = questions.length > 0 && (activeEntry == null || question == null);
+  const queueCompleted =
+    questionsStatus === "ready" && questions.length > 0 && (activeEntry == null || question == null);
   const nextRound = activeEntry ? activeEntry.round + 1 : 2;
   const explanationLabel =
     answerState === "correct"
@@ -102,18 +210,35 @@ export function StudybitesExamPage() {
       ? []
       : attempts.slice((roundSummaryRound - 1) * ROUND_SIZE, roundSummaryRound * ROUND_SIZE);
 
+  const [isNewPracticeLaunch] = useState(() => consumeMcqPracticeLaunch(params?.fileId));
+
   useEffect(() => {
-    if (questions.length === 0) {
+    if (questionsStatus !== "ready" || questions.length === 0) {
       return;
     }
 
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setQueue(createInitialQueue(questions));
-    setCurrentPosition(0);
+    if (isNewPracticeLaunch) {
+      clearCachedMcqSession(params?.fileId);
+    }
+
+    const cachedSession = isNewPracticeLaunch
+      ? null
+      : readCachedMcqSession(params?.fileId, questions);
+    const initialQueue = createInitialQueue(questions);
+    const nextQueue = cachedSession?.queue.length ? cachedSession.queue : initialQueue;
+    const nextCurrentPosition =
+      nextQueue.length === 0
+        ? 0
+        : Math.max(0, Math.min(cachedSession?.currentIndex ?? 0, nextQueue.length - 1));
+
+    /* eslint-disable react-hooks/set-state-in-effect */
+    setSessionHydrated(false);
+    setQueue(nextQueue);
+    setCurrentPosition(nextCurrentPosition);
     setSelectedChoiceId(null);
     setAnswerState("idle");
-    setAttempts([]);
-    setRoundSummaryRound(null);
+    setAttempts(cachedSession?.attempts ?? []);
+    setRoundSummaryRound(cachedSession?.roundSummaryRound ?? null);
     setSummaryTopicsExpanded(false);
     setAskBitoOpen(false);
     setExplanationOpen(false);
@@ -122,13 +247,17 @@ export function StudybitesExamPage() {
     setTranslateOpen(false);
     setSettingsOpen(false);
     setBadFlashcardOpen(false);
-    setFlaggedQuestionIds([]);
+    setBadFlashcardReason(badFlashcardReasons[0].label);
+    setFlaggedQuestionIds(cachedSession?.flaggedQuestionIds ?? []);
     setTranslateLanguage(translateOptions[0]);
-    setScore(0);
-    setXpEarned(0);
-    setBestStreak(0);
-    setCurrentStreak(0);
-    setSessionId(null);
+    setScore(cachedSession?.score ?? 0);
+    setXpEarned(cachedSession?.xpEarned ?? 0);
+    setBestStreak(cachedSession?.bestStreak ?? 0);
+    setCurrentStreak(cachedSession?.currentStreak ?? 0);
+    setSessionId(cachedSession?.sessionId ?? null);
+    setSessionStudySetId(cachedSession?.studySetId ?? null);
+    setSessionHydrated(true);
+    /* eslint-enable react-hooks/set-state-in-effect */
 
     const userId = user?.id;
     if (!userId || !params?.fileId) {
@@ -143,10 +272,12 @@ export function StudybitesExamPage() {
           userId: sessionUserId,
           fileId: params.fileId,
           questions,
-          forceNew: true,
+          forceNew: isNewPracticeLaunch,
+          restoreSessionId: isNewPracticeLaunch ? null : cachedSession?.sessionId ?? null,
         });
         if (!cancelled) {
           setSessionId(nextSession.id);
+          setSessionStudySetId(nextSession.studySetId);
         }
       } catch (error) {
         if (!cancelled) {
@@ -160,7 +291,69 @@ export function StudybitesExamPage() {
     return () => {
       cancelled = true;
     };
-  }, [params?.fileId, questions, user?.id]);
+  }, [params?.fileId, questions, questionsStatus, user?.id]);
+
+  useEffect(() => {
+    if (!sessionHydrated || questionsStatus !== "ready" || !questions.length || !params?.fileId) {
+      return;
+    }
+
+    const resumeSnapshot = buildSessionResumeSnapshot({
+      activeEntry,
+      answerState,
+      answeredCount: attempts.length,
+      currentPosition,
+      currentRoundNumber,
+      question,
+      questions,
+      queue,
+      queueCompleted,
+      roundSummaryRound,
+    });
+
+    cacheMcqSessionSnapshot({
+      attempts,
+      answeredQuestions: attempts.length,
+      bestStreak,
+      currentIndex: resumeSnapshot.currentIndex,
+      currentRound: resumeSnapshot.currentRound,
+      currentStreak,
+      fileId: params.fileId,
+      flaggedCount: flaggedQuestionIds.length,
+      flaggedQuestionIds,
+      questionId: resumeSnapshot.questionId,
+      questions,
+      queue,
+      roundSummaryRound: resumeSnapshot.roundSummaryRound,
+      score,
+      sessionId,
+      status: resumeSnapshot.status,
+      studySetId: sessionStudySetId,
+      totalQuestions: questions.length,
+      xpEarned,
+    });
+  }, [
+    activeEntry,
+    answerState,
+    attempts,
+    bestStreak,
+    currentPosition,
+    currentRoundNumber,
+    currentStreak,
+    flaggedQuestionIds,
+    params?.fileId,
+    question,
+    queue,
+    queueCompleted,
+    questions,
+    roundSummaryRound,
+    score,
+    sessionId,
+    sessionHydrated,
+    sessionStudySetId,
+    questionsStatus,
+    xpEarned,
+  ]);
 
   useEffect(() => {
     if (!notice) {
@@ -171,46 +364,79 @@ export function StudybitesExamPage() {
     return () => window.clearTimeout(timeoutId);
   }, [notice]);
 
-
   useEffect(() => {
-    if (!sessionId || !questions.length) {
+    if (
+      !sessionHydrated ||
+      questionsStatus !== "ready" ||
+      !sessionId ||
+      !questions.length ||
+      !params?.fileId ||
+      !user?.id
+    ) {
       return;
     }
 
-    const status = queueCompleted ? "completed" : "active";
-    void syncMcqSessionSnapshot({
-      sessionId,
+    const resumeSnapshot = buildSessionResumeSnapshot({
+      activeEntry,
+      answerState,
+      answeredCount: attempts.length,
+      currentPosition,
+      currentRoundNumber,
+      question,
+      questions,
       queue,
-      currentIndex: currentPosition,
-      currentRound: activeEntry?.round ?? roundSummaryRound ?? 1,
+      queueCompleted,
+      roundSummaryRound,
+    });
+
+    void syncMcqSessionSnapshot({
+      attempts,
       answeredQuestions: attempts.length,
-      totalQuestions: questions.length,
-      score,
-      xpEarned,
       bestStreak,
+      currentIndex: resumeSnapshot.currentIndex,
+      currentRound: resumeSnapshot.currentRound,
       currentStreak,
+      fileId: params.fileId,
       flaggedCount: flaggedQuestionIds.length,
-      status,
+      flaggedQuestionIds,
+      questionId: resumeSnapshot.questionId,
+      questions,
+      queue,
+      roundSummaryRound: resumeSnapshot.roundSummaryRound,
+      score,
+      sessionId,
+      status: resumeSnapshot.status,
+      studySetId: sessionStudySetId,
+      totalQuestions: questions.length,
+      xpEarned,
     }).catch((error) => {
       setNotice(error instanceof Error ? error.message : "Could not sync the MCQ session.");
     });
   }, [
-    activeEntry?.round,
-    attempts.length,
+    activeEntry,
+    answerState,
+    attempts,
     bestStreak,
     currentPosition,
+    currentRoundNumber,
     currentStreak,
-    flaggedQuestionIds.length,
+    flaggedQuestionIds,
+    params?.fileId,
+    question,
     queue,
     queueCompleted,
-    questions.length,
+    questions,
     roundSummaryRound,
     score,
+    sessionHydrated,
     sessionId,
+    sessionStudySetId,
+    questionsStatus,
+    user?.id,
     xpEarned,
   ]);
 
-  function resetQuestionUi() {
+  function resetQuestionUi({ keepSettingsOpen = false }: { keepSettingsOpen?: boolean } = {}) {
     setSelectedChoiceId(null);
     setAnswerState("idle");
     setExplanationOpen(false);
@@ -218,11 +444,14 @@ export function StudybitesExamPage() {
     setSourceOpen(false);
     setTranslateOpen(false);
     setBadFlashcardOpen(false);
+    if (!keepSettingsOpen) {
+      setSettingsOpen(false);
+    }
   }
 
-  function goToNextQuestion() {
-    if (answeredCount > 0 && answeredCount % ROUND_SIZE === 0) {
-      setRoundSummaryRound(Math.ceil(answeredCount / ROUND_SIZE));
+  function goToNextQuestion(nextAnsweredCount = answeredCount) {
+    if (nextAnsweredCount > 0 && nextAnsweredCount % ROUND_SIZE === 0) {
+      setRoundSummaryRound(Math.ceil(nextAnsweredCount / ROUND_SIZE));
       setSummaryTopicsExpanded(false);
       resetQuestionUi();
       return;
@@ -328,6 +557,8 @@ export function StudybitesExamPage() {
   }
 
   function restartSession() {
+    clearCachedMcqSession(params?.fileId);
+    setSessionHydrated(false);
     setQueue(createInitialQueue(questions));
     setCurrentPosition(0);
     setAttempts([]);
@@ -339,8 +570,11 @@ export function StudybitesExamPage() {
     setXpEarned(0);
     setBestStreak(0);
     setCurrentStreak(0);
+    setSessionId(null);
+    setSessionStudySetId(null);
     resetQuestionUi();
-    setSettingsOpen(false);
+    setBadFlashcardReason(badFlashcardReasons[0].label);
+    setSessionHydrated(true);
     setNotice("Practice session restarted.");
 
     if (user?.id && params?.fileId) {
@@ -350,15 +584,62 @@ export function StudybitesExamPage() {
         questions,
         forceNew: true,
       })
-        .then((nextSession) => setSessionId(nextSession.id))
+        .then((nextSession) => {
+          setSessionId(nextSession.id);
+          setSessionStudySetId(nextSession.studySetId);
+        })
         .catch((error) => {
           setNotice(error instanceof Error ? error.message : "Could not restart the MCQ session.");
         });
     }
   }
 
-  if (questions.length === 0) {
-    return null;
+  if (questionsStatus === "loading") {
+    return (
+      <main className="min-h-screen bg-[radial-gradient(circle_at_top,#f8faff_0%,#eef2fb_48%,#e8eef9_100%)] font-cairo text-[#344054] dark:bg-[radial-gradient(circle_at_top,#10192f_0%,#0d1528_42%,#09111f_100%)] dark:text-[#d7def0]">
+        <div className="mx-auto flex min-h-screen max-w-[720px] flex-col items-center justify-center px-6 text-center">
+          <div className="flex size-14 items-center justify-center rounded-full bg-white/90 text-[#5f62f2] shadow-[0_18px_48px_rgba(103,109,167,0.18)] dark:bg-[#182338] dark:text-[#c8c7ff]">
+            <span className="inline-flex size-6 animate-spin rounded-full border-2 border-current border-t-transparent" />
+          </div>
+          <h1 className="mt-6 text-[30px] font-bold text-[#273142] dark:text-white">
+            Preparing your MCQs
+          </h1>
+          <p className="mt-3 max-w-[560px] text-[16px] leading-8 text-[#667085] dark:text-[#b5c2d8]">
+            We&apos;re loading your question set. If this file hasn&apos;t been generated yet, the app will create the MCQs from the extracted document text now.
+          </p>
+          <button
+            type="button"
+            onClick={() => router.push(filePageHref)}
+            className="mt-8 rounded-full bg-white px-5 py-3 text-[15px] font-bold text-[#475467] shadow-[0_18px_48px_rgba(103,109,167,0.12)] dark:bg-[#182338] dark:text-[#d7def0]"
+          >
+            Back to file
+          </button>
+        </div>
+      </main>
+    );
+  }
+
+  if (questionsStatus === "error" || questionsStatus === "empty") {
+    return (
+      <main className="min-h-screen bg-[radial-gradient(circle_at_top,#f8faff_0%,#eef2fb_48%,#e8eef9_100%)] font-cairo text-[#344054] dark:bg-[radial-gradient(circle_at_top,#10192f_0%,#0d1528_42%,#09111f_100%)] dark:text-[#d7def0]">
+        <div className="mx-auto flex min-h-screen max-w-[720px] flex-col items-center justify-center px-6 text-center">
+          <h1 className="text-[28px] font-bold text-[#273142] dark:text-white">
+            {questionsStatus === "empty" ? "MCQs aren't ready yet" : "MCQ session unavailable"}
+          </h1>
+          <p className="mt-3 text-[16px] leading-8 text-[#667085] dark:text-[#b5c2d8]">
+            {questionsErrorMessage ??
+              "We couldn't load this practice session. Please go back to the file page and try again."}
+          </p>
+          <button
+            type="button"
+            onClick={() => router.push(filePageHref)}
+            className="mt-8 rounded-full bg-white px-5 py-3 text-[15px] font-bold text-[#475467] shadow-[0_18px_48px_rgba(103,109,167,0.12)] dark:bg-[#182338] dark:text-[#d7def0]"
+          >
+            Back to file
+          </button>
+        </div>
+      </main>
+    );
   }
 
   if (roundSummaryRound != null) {
@@ -378,7 +659,7 @@ export function StudybitesExamPage() {
         topicStats={topicStats}
         totalXp={xp}
         onToggleTopics={() => setSummaryTopicsExpanded((current) => !current)}
-        onBack={() => router.push("/library/files/6260097")}
+        onBack={() => router.push(filePageHref)}
         onContinue={() => {
           setRoundSummaryRound(null);
           if (hasNextQuestion) {
@@ -408,13 +689,29 @@ export function StudybitesExamPage() {
         totalXp={totalXp}
         topicStats={topicStats}
         onRestart={restartSession}
-        onBack={() => router.push("/library/files/6260097")}
+        onBack={() => router.push(filePageHref)}
       />
     );
   }
 
   if (!question) {
-    return null;
+    return (
+      <main className="min-h-screen bg-[radial-gradient(circle_at_top,#f8faff_0%,#eef2fb_48%,#e8eef9_100%)] font-cairo text-[#344054] dark:bg-[radial-gradient(circle_at_top,#10192f_0%,#0d1528_42%,#09111f_100%)] dark:text-[#d7def0]">
+        <div className="mx-auto flex min-h-screen max-w-[720px] flex-col items-center justify-center px-6 text-center">
+          <h1 className="text-[28px] font-bold text-[#273142] dark:text-white">Question set unavailable</h1>
+          <p className="mt-3 text-[16px] leading-8 text-[#667085] dark:text-[#b5c2d8]">
+            The MCQ queue has not been created yet for this file. Please go back and retry after generation finishes.
+          </p>
+          <button
+            type="button"
+            onClick={() => router.push(filePageHref)}
+            className="mt-8 rounded-full bg-white px-5 py-3 text-[15px] font-bold text-[#475467] shadow-[0_18px_48px_rgba(103,109,167,0.12)] dark:bg-[#182338] dark:text-[#d7def0]"
+          >
+            Back to file
+          </button>
+        </div>
+      </main>
+    );
   }
 
   return (
@@ -423,7 +720,7 @@ export function StudybitesExamPage() {
         <header className="flex items-start justify-between gap-3">
           <RoundIconButton
             ariaLabel="Close"
-            onClick={() => router.push("/library/files/6260097")}
+            onClick={() => router.push(filePageHref)}
           >
             <CloseIcon />
           </RoundIconButton>
@@ -457,7 +754,7 @@ export function StudybitesExamPage() {
                 />
                 <MiniMenuButton
                   label="Back to file"
-                  onClick={() => router.push("/library/files/6260097")}
+                  onClick={() => router.push(filePageHref)}
                 />
               </div>
             ) : null}
@@ -608,29 +905,45 @@ export function StudybitesExamPage() {
                     </BottomAction>
                   </div>
 
-                  <BottomAction
-                    label="Skip"
-                    onClick={() => {
-                      setAttempts((current) => [
-                        ...current,
-                        {
+                    <BottomAction
+                      label="Skip"
+                      onClick={() => {
+                        const nextQueue = [
+                          ...queue,
+                          {
+                            questionIndex: activeEntry.questionIndex,
+                            round: nextRound,
+                            key: `${question.id}-round-${nextRound}-${queue.length}`,
+                          },
+                        ];
+                        setAttempts((current) => [
+                          ...current,
+                          {
                           questionId: question.id,
                           topic: question.topic,
                           result: "incorrect",
-                          round: activeEntry.round,
-                        },
-                      ]);
-                      setQueue((current) => [
-                        ...current,
-                        {
-                          questionIndex: activeEntry.questionIndex,
-                          round: nextRound,
-                          key: `${question.id}-round-${nextRound}-${current.length}`,
-                        },
-                      ]);
-                      goToNextQuestion();
-                    }}
-                  >
+                            round: activeEntry.round,
+                          },
+                        ]);
+                        setQueue(nextQueue);
+                        if (sessionId && user?.id) {
+                          void recordMcqAttempt({
+                            sessionId,
+                            userId: user.id,
+                            questionId: question.id,
+                            selectedChoiceId: null,
+                            isCorrect: false,
+                            roundNumber: activeEntry.round,
+                            queuePosition: currentPosition,
+                            xpAwarded: 0,
+                          }).catch((error) => {
+                            setNotice(error instanceof Error ? error.message : "Could not save the MCQ attempt.");
+                          });
+                        }
+                        setNotice(`We'll bring this one back in Round ${nextRound}.`);
+                        goToNextQuestion(answeredCount + 1);
+                      }}
+                    >
                     <SkipIcon />
                   </BottomAction>
                 </div>
