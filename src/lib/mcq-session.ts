@@ -1,7 +1,7 @@
 "use client";
 
 import type { ExamQuestion } from "@/types/auth";
-import type { Json } from "@/types/database";
+
 
 export type SessionEntry = {
   questionIndex: number;

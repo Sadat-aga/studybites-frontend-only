@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
   },
+  allowedDevOrigins: ['studybites9653.builtwithrocket.new'],
 };
 
 export default nextConfig;
