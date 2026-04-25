@@ -309,11 +309,13 @@ export function StudybitesFlashcardsPage() {
                     </div>
                   ) : null}
 
-                  <button
-                    type="button"
+                  <div
+                    role="button"
+                    tabIndex={0}
                     onClick={() => setRevealed((current) => !current)}
+                    onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setRevealed((current) => !current); } }}
                     className={cn(
-                      "relative z-10 w-full rounded-[32px] border px-6 py-7 text-left shadow-[0_20px_60px_rgba(103,109,167,0.16)] transition duration-300 hover:translate-y-[-2px] hover:shadow-[0_26px_66px_rgba(103,109,167,0.18)] dark:shadow-[0_24px_70px_rgba(0,0,0,0.32)] dark:hover:shadow-[0_28px_72px_rgba(0,0,0,0.36)] md:px-8 md:py-8",
+                      "relative z-10 w-full cursor-pointer rounded-[32px] border px-6 py-7 text-left shadow-[0_20px_60px_rgba(103,109,167,0.16)] transition duration-300 hover:translate-y-[-2px] hover:shadow-[0_26px_66px_rgba(103,109,167,0.18)] dark:shadow-[0_24px_70px_rgba(0,0,0,0.32)] dark:hover:shadow-[0_28px_72px_rgba(0,0,0,0.36)] md:px-8 md:py-8",
                       previewCard ? "min-h-[360px]" : "",
                       revealed
                         ? "border-[#6a64ff] bg-[linear-gradient(180deg,#6a64ff_0%,#584ee7_100%)] text-white"
@@ -375,7 +377,7 @@ export function StudybitesFlashcardsPage() {
                         </button>
                       </div>
                     </div>
-                  </button>
+                  </div>
                 </div>
               </div>
 
@@ -495,8 +497,7 @@ function AssistantRail({
               {activeUtility ? `${activeUtility} with Bito` : "Ask Bito!"}
             </div>
             <div className="mt-2 text-[15px] leading-7">
-              {activeUtility === "Translate"
-                ? "The flashcard can be translated while keeping the literary meaning intact."
+              {activeUtility === "Translate" ?"The flashcard can be translated while keeping the literary meaning intact."
                 : activeUtility === "Explain"
                   ? card.explanation
                   : activeUtility === "Mnemonics"
@@ -504,8 +505,7 @@ function AssistantRail({
                     : activeUtility === "Example"
                       ? card.example
                       : revealed
-                        ? "Nice reveal. You can now decide whether this card feels mastered or still belongs in active review."
-                        : "Tap the card first, then I can help you unpack the answer or generate examples."}
+                        ? "Nice reveal. You can now decide whether this card feels mastered or still belongs in active review." :"Tap the card first, then I can help you unpack the answer or generate examples."}
             </div>
           </>
         ) : (
@@ -577,8 +577,7 @@ function MobileAssistantSheet({
                 ? card.example
                 : `Bito is focusing on ${activeUtility.toLowerCase()} for this flashcard right now.`
           : revealed
-            ? "Now that the answer is revealed, Bito can help explain why the line matters."
-            : "Flip the card first, then ask Bito for a deeper explanation, an example, or a mnemonic."}
+            ? "Now that the answer is revealed, Bito can help explain why the line matters." :"Flip the card first, then ask Bito for a deeper explanation, an example, or a mnemonic."}
       </p>
       <div className="mt-5 flex items-center gap-3 rounded-[14px] border border-[#dfe6f3] bg-[#f8faff] px-4 py-3 text-[#94a3b8] dark:border-[#314059] dark:bg-[#111b2f] dark:text-[#8fa3c2]">
         <AskWandIcon />
