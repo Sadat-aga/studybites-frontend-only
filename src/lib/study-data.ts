@@ -11,16 +11,7 @@ import {
   MOCK_MCQ_CONTENT_STATS,
   MOCK_SUMMARY_RESULT,
 } from "@/lib/mock-study-data";
-import type {
-  DocumentSummary,
-  ExamQuestion,
-  FileActivity,
-  FileProgressMetric,
-  Flashcard,
-  LibraryDocument,
-  McqContentItem,
-  McqContentStat,
-} from "@/types/auth";
+import type { DocumentSummary, FileActivity, FileProgressMetric, LibraryDocument, McqContentItem, McqContentStat,  } from "@/types/auth";
 
 export const DEFAULT_LIBRARY_DOCUMENT: LibraryDocument = MOCK_LIBRARY_DOCUMENT;
 export const DEFAULT_FILE_ACTIVITIES: FileActivity[] = MOCK_FILE_ACTIVITIES;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useEffectEvent, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth";
 import {
@@ -193,9 +193,7 @@ export function StudybitesExamPage() {
     questionsStatus === "ready" && questions.length > 0 && (activeEntry == null || question == null);
   const nextRound = activeEntry ? activeEntry.round + 1 : 2;
   const explanationLabel =
-    answerState === "correct"
-      ? "Explain why this is the correct answer"
-      : "Explain why this is the wrong answer";
+    answerState === "correct" ?"Explain why this is the correct answer" :"Explain why this is the wrong answer";
   const currentRoundNumber =
     roundSummaryRound ??
     (Math.floor(
@@ -460,7 +458,8 @@ export function StudybitesExamPage() {
     resetQuestionUi();
   }
 
-  const handleKeyboardAdvance = useEffectEvent((event: KeyboardEvent) => {
+  const handleKeyboardAdvanceRef = useRef<(event: KeyboardEvent) => void>(() => {});
+  handleKeyboardAdvanceRef.current = useCallback((event: KeyboardEvent) => {
     if (event.key === "Escape") {
       setSettingsOpen(false);
       setHintOpen(false);
@@ -483,11 +482,12 @@ export function StudybitesExamPage() {
       event.preventDefault();
       goToNextQuestion();
     }
-  });
+  }, [answerState, badFlashcardOpen, translateOpen, sourceOpen, hintOpen, goToNextQuestion]);
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyboardAdvance);
-    return () => window.removeEventListener("keydown", handleKeyboardAdvance);
+    const handler = (event: KeyboardEvent) => handleKeyboardAdvanceRef.current(event);
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
   }, []);
 
   function handleChoice(choiceId: string) {
@@ -769,11 +769,8 @@ export function StudybitesExamPage() {
                   "rounded-full transition-all duration-300",
                   dot === currentProgressIndex
                     ? "h-[10px] flex-1 bg-[#5b5bf5] shadow-[0_4px_10px_rgba(91,91,245,0.28)]"
-                    : currentRoundAttempts[dot]?.result === "correct"
-                      ? "h-[10px] flex-1 bg-[#8ec65d] shadow-[0_4px_10px_rgba(142,198,93,0.24)]"
-                      : currentRoundAttempts[dot]?.result === "incorrect"
-                        ? "h-[10px] flex-1 bg-[#f86363] shadow-[0_4px_10px_rgba(248,99,99,0.2)]"
-                        : "h-[10px] flex-1 bg-[#1d283a] dark:bg-[#1d283a]",
+                    : currentRoundAttempts[dot]?.result === "correct" ?"h-[10px] flex-1 bg-[#8ec65d] shadow-[0_4px_10px_rgba(142,198,93,0.24)]"
+                      : currentRoundAttempts[dot]?.result === "incorrect" ?"h-[10px] flex-1 bg-[#f86363] shadow-[0_4px_10px_rgba(248,99,99,0.2)]" :"h-[10px] flex-1 bg-[#1d283a] dark:bg-[#1d283a]",
                 )}
               />
             ))}
